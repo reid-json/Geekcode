@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import Editor, { loader, type OnMount } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
 import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import TypeScriptWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import { useStore } from '../core/store';
 import type { Language } from '../content/schema';
 
-self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
+self.MonacoEnvironment = {
+  getWorker: (_moduleId, label) =>
+    label === 'typescript' || label === 'javascript' ? new TypeScriptWorker() : new EditorWorker(),
+};
 loader.config({ monaco });
 
 export default function CodeEditor({
