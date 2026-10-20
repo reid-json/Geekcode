@@ -1,0 +1,31 @@
+{
+  "id": "dsa",
+  "title": "Data Structures & Algorithms",
+  "short": "Algorithms",
+  "code": "01",
+  "color": "#b5f36c",
+  "description": "Find the pattern. Prove the invariant. Make it fast.",
+  "career": {
+    "skills": [
+      "Algorithms and complexity"
+    ],
+    "keywords": [
+      "Algorithms and complexity",
+      "dsa"
+    ],
+    "questions": [
+      "What invariant makes Algorithms and complexity reliable?",
+      "When would Algorithms and complexity fail or become expensive?",
+      "How would you test Algorithms and complexity at its boundaries?"
+    ],
+    "outline": "State the goal, explain Algorithms and complexity using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Pathfinding workbench",
+        "scope": "Compare explored states, path length, and measured runtime on editable graphs.",
+        "stack": "TypeScript, SVG, Vitest",
+        "readme": "Document invariants, complexity, benchmark inputs, and reproducible tests."
+      }
+    ]
+  }
+}

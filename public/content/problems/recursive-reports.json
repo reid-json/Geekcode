@@ -1,0 +1,298 @@
+{
+  "id": "recursive-reports",
+  "title": "Recursive reports",
+  "topic": "Recursive queries",
+  "track": "sql",
+  "kind": "code",
+  "difficulty": "Hard",
+  "description": "Starting from employee 1, list that employee and every transitive report as [name,depth], ordered by depth then name. Seed data has no manager cycle.\n\nSchema: departments(id,name); employees(id,name,department_id,salary,manager_id); orders(id,customer,amount,ordered_on). Salary/amount are integer units. Dates are ISO text. Return the requested columns only. Read-only SQLite; the last SELECT result is graded. Each test starts from a fresh database.",
+  "languages": [
+    "sql"
+  ],
+  "starter": {
+    "sql": "-- Inspect the schema in the description.\nSELECT * FROM employees;\n"
+  },
+  "reference": {
+    "sql": "WITH RECURSIVE team(id,name,depth) AS (SELECT id,name,0 FROM employees WHERE id=1 UNION ALL SELECT e.id,e.name,t.depth+1 FROM employees e JOIN team t ON e.manager_id=t.id) SELECT name,depth FROM team ORDER BY depth,name"
+  },
+  "seed": "\nCREATE TABLE departments(id INTEGER PRIMARY KEY,name TEXT NOT NULL);\nCREATE TABLE employees(id INTEGER PRIMARY KEY,name TEXT,department_id INTEGER,salary INTEGER,manager_id INTEGER);\nCREATE TABLE orders(id INTEGER PRIMARY KEY,customer TEXT,amount INTEGER,ordered_on TEXT);\nINSERT INTO departments VALUES (1,'Engineering'),(2,'Support'),(3,'Research');\nINSERT INTO employees VALUES (1,'Ada',1,120,NULL),(2,'Lin',1,100,1),(3,'Sam',2,80,NULL),(4,'Jo',2,80,3),(5,'Kai',NULL,60,NULL);\nINSERT INTO orders VALUES (1,'Ada',40,'2026-01-01'),(2,'Ada',60,'2026-01-02'),(3,'Lin',30,'2026-01-02'),(4,'Sam',90,'2026-01-03');\n",
+  "tests": [
+    {
+      "args": [],
+      "expected": [
+        [
+          "Ada",
+          0
+        ],
+        [
+          "Lin",
+          1
+        ]
+      ],
+      "label": "Seed database"
+    },
+    {
+      "args": [
+        "INSERT INTO employees VALUES(6,'Pat',1,50,2);"
+      ],
+      "expected": [
+        [
+          "Ada",
+          0
+        ],
+        [
+          "Lin",
+          1
+        ],
+        [
+          "Pat",
+          2
+        ]
+      ],
+      "hidden": true,
+      "label": "Changed data"
+    }
+  ],
+  "hints": [
+    "Which rows must survive when no match exists?",
+    "What defines a group, and what defines ordering inside it?",
+    "How would tied values or a missing value change your result?"
+  ],
+  "complexity": {
+    "time": "Plan-dependent; inspect indexes and cardinality",
+    "space": "Plan-dependent"
+  },
+  "editorial": "The reference query makes row identity, grouping, and output ordering explicit. Compare a correlated subquery with a join/CTE formulation where applicable: repeated scans can cost more, while joins can multiply rows accidentally. Check NULL semantics and ties. For performance, use EXPLAIN QUERY PLAN and consider an index matching filter and ordering columns; do not assume an index is always used.",
+  "coach": {
+    "forbiddenTerms": [
+      "Recursive queries"
+    ],
+    "prerequisites": [
+      "lesson-recursive-queries"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "question": "In your own words, what are the inputs, the required output, and one boundary case?",
+        "insights": [
+          [
+            "input",
+            "given",
+            "receive"
+          ],
+          [
+            "output",
+            "return",
+            "result"
+          ],
+          [
+            "empty",
+            "single",
+            "zero",
+            "boundary",
+            "missing"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "boundary",
+            "question": "What is the smallest legal input, and what should happen to it?"
+          }
+        ]
+      },
+      {
+        "id": "trace",
+        "question": "Work through the first example by hand. What changes after each step?",
+        "insights": [
+          [
+            "first",
+            "step",
+            "start"
+          ],
+          [
+            "then",
+            "next",
+            "after"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "step",
+            "question": "Write the state before and after just the first step."
+          }
+        ]
+      },
+      {
+        "id": "baseline",
+        "question": "Describe a direct approach, even if it repeats work. How many steps could it take?",
+        "insights": [
+          [
+            "each",
+            "every",
+            "all"
+          ],
+          [
+            "time",
+            "steps",
+            "o(",
+            "operations"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "time",
+            "question": "If the input doubled, about how much more work would that approach do?"
+          }
+        ]
+      },
+      {
+        "id": "bottleneck",
+        "question": "Which question does your approach answer repeatedly? What could you remember between steps?",
+        "insights": [
+          [
+            "repeat",
+            "again",
+            "reuse",
+            "remember",
+            "store",
+            "cache"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "repeat",
+            "question": "Circle two steps that recompute the same fact. What is that fact?"
+          }
+        ]
+      },
+      {
+        "id": "discover",
+        "question": "What information must remain true after each step for the next decision to be safe?",
+        "insights": [
+          [
+            "keep",
+            "true",
+            "invariant",
+            "maintain",
+            "state"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Describe the information you would keep, without choosing any code yet."
+          }
+        ]
+      },
+      {
+        "id": "plan",
+        "question": "Write your plan in plain steps. What happens with equal values, missing values, or the final item?",
+        "insights": [
+          [
+            "if",
+            "when"
+          ],
+          [
+            "return",
+            "result",
+            "finish",
+            "output"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "finish",
+            "question": "How will you know you are done, and what will you return?"
+          }
+        ]
+      },
+      {
+        "id": "implement",
+        "question": "Implement your plan in the editor. Which part will you test first?",
+        "insights": [
+          [
+            "test",
+            "case",
+            "check",
+            "run"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "test",
+            "question": "Choose one input where a small mistake would be visible immediately."
+          }
+        ]
+      },
+      {
+        "id": "debug",
+        "question": "Trace a test input. At which step could the actual state first differ from your intended state?",
+        "insights": [
+          [
+            "state",
+            "step",
+            "expected",
+            "actual",
+            "match"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Write one expected intermediate value and compare it with your output."
+          }
+        ]
+      },
+      {
+        "id": "reflect",
+        "question": "State time and extra-space costs and why. What would change for a million items?",
+        "insights": [
+          [
+            "time",
+            "o("
+          ],
+          [
+            "space",
+            "memory"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "space",
+            "question": "Which stored values grow with the input, rather than staying fixed?"
+          }
+        ]
+      }
+    ],
+    "stuck": [
+      "Restate just the output requirement. What would a correct result look like for one tiny input?",
+      "Try a smaller version with only two items. What decisions are possible?",
+      "Mini-exercise: write a two-row table showing input, your current state, and the next decision. Which fact is missing?",
+      "Pause and read the prerequisite lesson on Recursive queries. Return with one rule in your own words."
+    ]
+  },
+  "career": {
+    "skills": [
+      "Recursive queries"
+    ],
+    "keywords": [
+      "Recursive queries",
+      "sql"
+    ],
+    "questions": [
+      "What invariant makes Recursive queries reliable?",
+      "When would Recursive queries fail or become expensive?",
+      "How would you test Recursive queries at its boundaries?"
+    ],
+    "outline": "State the goal, explain Recursive queries using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Query performance notebook",
+        "scope": "Model an order database and compare query plans before and after indexing.",
+        "stack": "SQLite, Python",
+        "readme": "Include schema, seed generator, transactions, EXPLAIN output, and repeatable timings."
+      }
+    ]
+  },
+  "prerequisites": []
+}

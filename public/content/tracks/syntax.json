@@ -1,0 +1,31 @@
+{
+  "id": "syntax",
+  "title": "Language Syntax & Idioms",
+  "short": "Languages",
+  "code": "02",
+  "color": "#bca4ff",
+  "description": "Turn familiar ideas into fluent, idiomatic code.",
+  "career": {
+    "skills": [
+      "Language fluency"
+    ],
+    "keywords": [
+      "Language fluency",
+      "syntax"
+    ],
+    "questions": [
+      "What invariant makes Language fluency reliable?",
+      "When would Language fluency fail or become expensive?",
+      "How would you test Language fluency at its boundaries?"
+    ],
+    "outline": "State the goal, explain Language fluency using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Cross-language collection cookbook",
+        "scope": "Implement equivalent transformations and edge-case tests in Java, Python, and TypeScript.",
+        "stack": "Java, Python, TypeScript",
+        "readme": "Include semantic differences, error cases, and repeatable test commands."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "systems",
+  "title": "System Design",
+  "short": "Systems",
+  "code": "06",
+  "color": "#83b7ff",
+  "description": "Reason about scale, failure, and the tradeoffs between.",
+  "career": {
+    "skills": [
+      "Distributed systems reasoning"
+    ],
+    "keywords": [
+      "Distributed systems reasoning",
+      "systems"
+    ],
+    "questions": [
+      "What invariant makes Distributed systems reasoning reliable?",
+      "When would Distributed systems reasoning fail or become expensive?",
+      "How would you test Distributed systems reasoning at its boundaries?"
+    ],
+    "outline": "State the goal, explain Distributed systems reasoning using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Rate-limited job service",
+        "scope": "Build a bounded queue with idempotency keys, backpressure, retries, and observable failure modes.",
+        "stack": "TypeScript, Redis, Docker",
+        "readme": "Document capacity estimates, consistency decisions, load tests, and tradeoffs."
+      }
+    ]
+  }
+}

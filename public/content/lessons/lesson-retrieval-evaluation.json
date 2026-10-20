@@ -1,0 +1,279 @@
+{
+  "id": "lesson-retrieval-evaluation",
+  "title": "Retrieval evaluation",
+  "topic": "Retrieval evaluation",
+  "track": "ai",
+  "minutes": 7,
+  "body": "## The mental model\nBuild a query set with relevance judgments and a defined unit: document, passage, or answer-bearing span. Precision@k measures result usefulness; recall@k measures relevant-set coverage; reciprocal rank measures how soon the first relevant result appears. Evaluation conventions must handle duplicates and unjudged results.\n\n## Worked example\nIf retrieved top two are [x,a] and relevant=[a,b], precision@2=.5, recall@2=.5, and reciprocal rank=.5. A retriever may have excellent recall but return chunks too long to fit the context budget.\n\n## Common mistakes\nEvaluating only on queries used to tune chunking or retrieval thresholds overestimates generalization. Relevance judgments may be incomplete or ambiguous.\n\n## A rule worth keeping\nKeep held-out queries and critical slices; measure downstream answer support in addition to retrieval ranking.\n\n## Put it to work\nBefore opening the related exercise, predict one tiny case on paper, name a boundary where your reasoning could fail, and write the invariant or guarantee you intend to preserve. After testing, compare the observed result with your prediction. Explain a mismatch rather than merely changing the answer.\n\n### Self-check\n- [ ] I can explain the worked example without rereading it.\n- [ ] I can construct a boundary case and explain its expected behavior.\n- [ ] I can name a cost, limitation, or tradeoff of this technique.\n- [ ] I can distinguish a practice result from a production guarantee.",
+  "diagram": [
+    "Held-out queries",
+    "Relevance judgments",
+    "Ranked retrieval",
+    "Metrics + failure slices"
+  ],
+  "cards": [
+    {
+      "front": "Explain Retrieval evaluation in your own words.",
+      "back": "Build a query set with relevance judgments and a defined unit: document, passage, or answer-bearing span. Precision@k measures result usefulness; recall@k measures relevant-set coverage; reciprocal rank measures how soon the first relevant result appears. Evaluation conventions must handle duplicates and unjudged results."
+    },
+    {
+      "front": "If the first relevant result is rank 4, what is reciprocal rank?",
+      "back": "0.25"
+    },
+    {
+      "front": "What is a common trap in Retrieval evaluation?",
+      "back": "Evaluating only on queries used to tune chunking or retrieval thresholds overestimates generalization. Relevance judgments may be incomplete or ambiguous."
+    },
+    {
+      "front": "What decision rule should you retain for Retrieval evaluation?",
+      "back": "Keep held-out queries and critical slices; measure downstream answer support in addition to retrieval ranking."
+    },
+    {
+      "front": "Walk through a concrete example of Retrieval evaluation.",
+      "back": "If retrieved top two are [x,a] and relevant=[a,b], precision@2=.5, recall@2=.5, and reciprocal rank=.5. A retriever may have excellent recall but return chunks too long to fit the context budget."
+    }
+  ],
+  "quick": {
+    "scenario": "If the first relevant result is rank 4, what is reciprocal rank?",
+    "prediction": "0.25",
+    "explanation": "If retrieved top two are [x,a] and relevant=[a,b], precision@2=.5, recall@2=.5, and reciprocal rank=.5. A retriever may have excellent recall but return chunks too long to fit the context budget.",
+    "challenge": "If the first relevant result is at rank 5, what is reciprocal rank?",
+    "answer": "0.2"
+  },
+  "coach": {
+    "forbiddenTerms": [],
+    "prerequisites": [
+      "lesson-retrieval-evaluation"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "question": "In your own words, what are the inputs, the required output, and one boundary case?",
+        "insights": [
+          [
+            "input",
+            "given",
+            "receive"
+          ],
+          [
+            "output",
+            "return",
+            "result"
+          ],
+          [
+            "empty",
+            "single",
+            "zero",
+            "boundary",
+            "missing"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "boundary",
+            "question": "What is the smallest legal input, and what should happen to it?"
+          }
+        ]
+      },
+      {
+        "id": "trace",
+        "question": "Work through the first example by hand. What changes after each step?",
+        "insights": [
+          [
+            "first",
+            "step",
+            "start"
+          ],
+          [
+            "then",
+            "next",
+            "after"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "step",
+            "question": "Write the state before and after just the first step."
+          }
+        ]
+      },
+      {
+        "id": "baseline",
+        "question": "Describe a direct approach, even if it repeats work. How many steps could it take?",
+        "insights": [
+          [
+            "each",
+            "every",
+            "all"
+          ],
+          [
+            "time",
+            "steps",
+            "o(",
+            "operations"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "time",
+            "question": "If the input doubled, about how much more work would that approach do?"
+          }
+        ]
+      },
+      {
+        "id": "bottleneck",
+        "question": "Which question does your approach answer repeatedly? What could you remember between steps?",
+        "insights": [
+          [
+            "repeat",
+            "again",
+            "reuse",
+            "remember",
+            "store",
+            "cache"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "repeat",
+            "question": "Circle two steps that recompute the same fact. What is that fact?"
+          }
+        ]
+      },
+      {
+        "id": "discover",
+        "question": "What information must remain true after each step for the next decision to be safe?",
+        "insights": [
+          [
+            "keep",
+            "true",
+            "invariant",
+            "maintain",
+            "state"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Describe the information you would keep, without choosing any code yet."
+          }
+        ]
+      },
+      {
+        "id": "plan",
+        "question": "Write your plan in plain steps. What happens with equal values, missing values, or the final item?",
+        "insights": [
+          [
+            "if",
+            "when"
+          ],
+          [
+            "return",
+            "result",
+            "finish",
+            "output"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "finish",
+            "question": "How will you know you are done, and what will you return?"
+          }
+        ]
+      },
+      {
+        "id": "implement",
+        "question": "Implement your plan in the editor. Which part will you test first?",
+        "insights": [
+          [
+            "test",
+            "case",
+            "check",
+            "run"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "test",
+            "question": "Choose one input where a small mistake would be visible immediately."
+          }
+        ]
+      },
+      {
+        "id": "debug",
+        "question": "Trace a test input. At which step could the actual state first differ from your intended state?",
+        "insights": [
+          [
+            "state",
+            "step",
+            "expected",
+            "actual",
+            "match"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Write one expected intermediate value and compare it with your output."
+          }
+        ]
+      },
+      {
+        "id": "reflect",
+        "question": "State time and extra-space costs and why. What would change for a million items?",
+        "insights": [
+          [
+            "time",
+            "o("
+          ],
+          [
+            "space",
+            "memory"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "space",
+            "question": "Which stored values grow with the input, rather than staying fixed?"
+          }
+        ]
+      }
+    ],
+    "stuck": [
+      "Restate just the output requirement. What would a correct result look like for one tiny input?",
+      "Try a smaller version with only two items. What decisions are possible?",
+      "Mini-exercise: write a two-row table showing input, your current state, and the next decision. Which fact is missing?",
+      "Pause and read the prerequisite lesson on Retrieval evaluation. Return with one rule in your own words."
+    ]
+  },
+  "career": {
+    "skills": [
+      "Retrieval evaluation"
+    ],
+    "keywords": [
+      "Retrieval evaluation",
+      "AI/ML evaluation"
+    ],
+    "questions": [
+      "What invariant makes Retrieval evaluation reliable?",
+      "When would Retrieval evaluation fail or become expensive?",
+      "How would you test Retrieval evaluation at its boundaries?"
+    ],
+    "outline": "State the goal, explain Retrieval evaluation using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Grounded retrieval evaluation lab",
+        "scope": "Build a retriever over public documents and measure retrieval recall and citation support on a held-out set.",
+        "stack": "Python, NumPy, SQLite",
+        "readme": "Describe dataset provenance, baselines, failure analysis, and measured results."
+      }
+    ]
+  },
+  "related": [
+    "retrieval-precision-and-recall",
+    "reciprocal-rank"
+  ],
+  "prerequisites": [
+    "lesson-rag-and-grounding"
+  ]
+}

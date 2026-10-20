@@ -1,0 +1,31 @@
+{
+  "id": "ai",
+  "title": "AI / ML Engineering",
+  "short": "AI / ML",
+  "code": "04",
+  "color": "#77dce8",
+  "description": "From gradients to grounded answers. Measure everything.",
+  "career": {
+    "skills": [
+      "Model and retrieval evaluation"
+    ],
+    "keywords": [
+      "Model and retrieval evaluation",
+      "AI/ML evaluation"
+    ],
+    "questions": [
+      "What invariant makes Model and retrieval evaluation reliable?",
+      "When would Model and retrieval evaluation fail or become expensive?",
+      "How would you test Model and retrieval evaluation at its boundaries?"
+    ],
+    "outline": "State the goal, explain Model and retrieval evaluation using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Grounded retrieval evaluation lab",
+        "scope": "Build a retriever over public documents and measure retrieval recall and citation support on a held-out set.",
+        "stack": "Python, NumPy, SQLite",
+        "readme": "Describe dataset provenance, baselines, failure analysis, and measured results."
+      }
+    ]
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "id": "zero-sum-triples",
+  "title": "Zero-sum triples",
+  "topic": "Two pointers",
+  "track": "dsa",
+  "kind": "code",
+  "difficulty": "Medium",
+  "description": "Return unique value triples summing to zero. Each triple and the overall list must be sorted ascending lexicographically.\n\nImplement `solve(...args)` and return the result; do not read stdin. Inputs are JSON values. Do not mutate inputs unless explicitly permitted.",
+  "languages": [
+    "javascript",
+    "typescript",
+    "python"
+  ],
+  "starter": {
+    "javascript": "function solve(...args) {\n  // Write your implementation here.\n}\n",
+    "typescript": "function solve(...args: unknown[]): unknown {\n  // Write your implementation here.\n}\n",
+    "python": "def solve(*args):\n    pass\n"
+  },
+  "reference": {
+    "javascript": "function solve(a){a=[...a].sort((x,y)=>x-y);const out=[];for(let i=0;i<a.length-2;i++){if(i&&a[i]===a[i-1])continue;let l=i+1,r=a.length-1;while(l<r){const s=a[i]+a[l]+a[r];if(s===0){out.push([a[i],a[l],a[r]]);let x=a[l],y=a[r];while(l<r&&a[l]===x)l++;while(l<r&&a[r]===y)r--;}else if(s<0)l++;else r--;}}return out;}",
+    "typescript": "function solve(a){a=[...a].sort((x,y)=>x-y);const out=[];for(let i=0;i<a.length-2;i++){if(i&&a[i]===a[i-1])continue;let l=i+1,r=a.length-1;while(l<r){const s=a[i]+a[l]+a[r];if(s===0){out.push([a[i],a[l],a[r]]);let x=a[l],y=a[r];while(l<r&&a[l]===x)l++;while(l<r&&a[r]===y)r--;}else if(s<0)l++;else r--;}}return out;}",
+    "python": "def solve(a):\n    a = sorted(a)\n    out = []\n    for i in range(len(a)-2):\n        if i and a[i] == a[i-1]: continue\n        l,r = i+1,len(a)-1\n        while l<r:\n            s = a[i]+a[l]+a[r]\n            if s==0:\n                out.append([a[i],a[l],a[r]])\n                x,y = a[l],a[r]\n                while l<r and a[l]==x: l+=1\n                while l<r and a[r]==y: r-=1\n            elif s<0: l+=1\n            else: r-=1\n    return out"
+  },
+  "tests": [
+    {
+      "args": [
+        [
+          -1,
+          0,
+          1,
+          2,
+          -1,
+          -4
+        ]
+      ],
+      "expected": [
+        [
+          -1,
+          -1,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "hidden": false,
+      "label": "Example 1"
+    },
+    {
+      "args": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "hidden": false,
+      "label": "Example 2"
+    },
+    {
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": [],
+      "hidden": true,
+      "label": "Boundary 1"
+    }
+  ],
+  "complexity": {
+    "time": "O(n²)",
+    "space": "O(n) excluding output"
+  },
+  "hints": [
+    "Which part of your hand-worked example repeats?",
+    "What fact from the previous step could you reuse?",
+    "Which single condition tells you a decision is safe?"
+  ],
+  "editorial": "## Key insight\nFix the smallest index, then use sorted monotonicity to move the remaining boundaries. Skip equal values to avoid duplicate triples.\n\n## Compare approaches\nStart with an exhaustive enumeration of valid candidates; it is a useful correctness oracle for small inputs, but can repeat work. The reference implementation avoids that repetition or bounds the explored states. Compare both on the smallest input and on equal values before measuring runtime.\n\n## Complexity\nTime: **O(n²)**. Extra space: **O(n) excluding output**. Count input-dependent containers and recursion frames, not just local variables.\n\n## Pitfalls\nCheck empty inputs, duplicate values, inclusive boundaries, and whether the result needs stable ordering. Passing examples alone is not proof of correctness.",
+  "coach": {
+    "forbiddenTerms": [
+      "Two pointers"
+    ],
+    "prerequisites": [
+      "lesson-two-pointers"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "question": "In your own words, what are the inputs, the required output, and one boundary case?",
+        "insights": [
+          [
+            "input",
+            "given",
+            "receive"
+          ],
+          [
+            "output",
+            "return",
+            "result"
+          ],
+          [
+            "empty",
+            "single",
+            "zero",
+            "boundary",
+            "missing"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "boundary",
+            "question": "What is the smallest legal input, and what should happen to it?"
+          }
+        ]
+      },
+      {
+        "id": "trace",
+        "question": "Work through the first example by hand: [[-1,0,1,2,-1,-4]]. What changes after each step, and why does it lead to [[-1,-1,2],[-1,0,1]]?",
+        "insights": [
+          [
+            "first",
+            "step",
+            "start"
+          ],
+          [
+            "then",
+            "next",
+            "after"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "step",
+            "question": "Write the state before and after just the first step."
+          }
+        ]
+      },
+      {
+        "id": "baseline",
+        "question": "Describe a direct approach, even if it repeats work. How many steps could it take?",
+        "insights": [
+          [
+            "each",
+            "every",
+            "all"
+          ],
+          [
+            "time",
+            "steps",
+            "o(",
+            "operations"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "time",
+            "question": "If the input doubled, about how much more work would that approach do?"
+          }
+        ]
+      },
+      {
+        "id": "bottleneck",
+        "question": "Which question does your approach answer repeatedly? What could you remember between steps?",
+        "insights": [
+          [
+            "repeat",
+            "again",
+            "reuse",
+            "remember",
+            "store",
+            "cache"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "repeat",
+            "question": "Circle two steps that recompute the same fact. What is that fact?"
+          }
+        ]
+      },
+      {
+        "id": "discover",
+        "question": "What information must remain true after each step for the next decision to be safe?",
+        "insights": [
+          [
+            "keep",
+            "true",
+            "invariant",
+            "maintain",
+            "state"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Describe the information you would keep, without choosing any code yet."
+          }
+        ]
+      },
+      {
+        "id": "plan",
+        "question": "Write your plan in plain steps. What happens with equal values, missing values, or the final item?",
+        "insights": [
+          [
+            "if",
+            "when"
+          ],
+          [
+            "return",
+            "result",
+            "finish",
+            "output"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "finish",
+            "question": "How will you know you are done, and what will you return?"
+          }
+        ]
+      },
+      {
+        "id": "implement",
+        "question": "Implement your plan in the editor. Which part will you test first?",
+        "insights": [
+          [
+            "test",
+            "case",
+            "check",
+            "run"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "test",
+            "question": "Choose one input where a small mistake would be visible immediately."
+          }
+        ]
+      },
+      {
+        "id": "debug",
+        "question": "Trace the first failing input shown in the test panel. At which step do expected and actual state diverge? If all tests pass, choose a boundary case and explain why it works.",
+        "insights": [
+          [
+            "state",
+            "step",
+            "expected",
+            "actual",
+            "match"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Write one expected intermediate value and compare it with your output."
+          }
+        ]
+      },
+      {
+        "id": "reflect",
+        "question": "State time and extra-space costs and why. What would change for a million items?",
+        "insights": [
+          [
+            "time",
+            "o("
+          ],
+          [
+            "space",
+            "memory"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "space",
+            "question": "Which stored values grow with the input, rather than staying fixed?"
+          }
+        ]
+      }
+    ],
+    "stuck": [
+      "Restate just the output requirement. What would a correct result look like for one tiny input?",
+      "Try a smaller version with only two items. What decisions are possible?",
+      "Mini-exercise: write a two-row table showing input, your current state, and the next decision. Which fact is missing?",
+      "Pause and read the prerequisite lesson on Two pointers. Return with one rule in your own words."
+    ]
+  },
+  "career": {
+    "skills": [
+      "Two pointers"
+    ],
+    "keywords": [
+      "Two pointers",
+      "dsa"
+    ],
+    "questions": [
+      "What invariant makes Two pointers reliable?",
+      "When would Two pointers fail or become expensive?",
+      "How would you test Two pointers at its boundaries?"
+    ],
+    "outline": "State the goal, explain Two pointers using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Pathfinding workbench",
+        "scope": "Compare explored states, path length, and measured runtime on editable graphs.",
+        "stack": "TypeScript, SVG, Vitest",
+        "readme": "Document invariants, complexity, benchmark inputs, and reproducible tests."
+      }
+    ]
+  },
+  "prerequisites": []
+}

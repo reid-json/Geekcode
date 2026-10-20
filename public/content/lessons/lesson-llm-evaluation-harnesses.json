@@ -1,0 +1,278 @@
+{
+  "id": "lesson-llm-evaluation-harnesses",
+  "title": "LLM evaluation harnesses",
+  "topic": "LLM evaluation harnesses",
+  "track": "ai",
+  "minutes": 7,
+  "body": "## The mental model\nAn evaluation harness fixes inputs, expected behaviors, scoring rules, and model/config versions. Use deterministic checks where possible and calibrated human judgments for subjective properties. Track latency, refusal appropriateness, grounding, and safety alongside task success.\n\n## Worked example\nA candidate can improve average score while regressing an important case from .8 to .2. Gate aggregate improvement and per-slice regressions. Record prompt version, retrieval index, decoding settings, and test-set provenance so results are reproducible.\n\n## Common mistakes\nAn LLM judge can share the same blind spots as the model being judged. Hidden test leakage and repeated optimization against the benchmark invalidate confidence.\n\n## A rule worth keeping\nUse versioned held-out cases, uncertainty estimates, and human review of the highest-impact failures.\n\n## Put it to work\nBefore opening the related exercise, predict one tiny case on paper, name a boundary where your reasoning could fail, and write the invariant or guarantee you intend to preserve. After testing, compare the observed result with your prediction. Explain a mismatch rather than merely changing the answer.\n\n### Self-check\n- [ ] I can explain the worked example without rereading it.\n- [ ] I can construct a boundary case and explain its expected behavior.\n- [ ] I can name a cost, limitation, or tradeoff of this technique.\n- [ ] I can distinguish a practice result from a production guarantee.",
+  "diagram": [
+    "Versioned cases",
+    "Candidate system",
+    "Independent scoring",
+    "Regression gate"
+  ],
+  "cards": [
+    {
+      "front": "Explain LLM evaluation harnesses in your own words.",
+      "back": "An evaluation harness fixes inputs, expected behaviors, scoring rules, and model/config versions. Use deterministic checks where possible and calibrated human judgments for subjective properties. Track latency, refusal appropriateness, grounding, and safety alongside task success."
+    },
+    {
+      "front": "Can a better mean score hide a severe regression on one important case? Answer yes/no.",
+      "back": "yes"
+    },
+    {
+      "front": "What is a common trap in LLM evaluation harnesses?",
+      "back": "An LLM judge can share the same blind spots as the model being judged. Hidden test leakage and repeated optimization against the benchmark invalidate confidence."
+    },
+    {
+      "front": "What decision rule should you retain for LLM evaluation harnesses?",
+      "back": "Use versioned held-out cases, uncertainty estimates, and human review of the highest-impact failures."
+    },
+    {
+      "front": "Walk through a concrete example of LLM evaluation harnesses.",
+      "back": "A candidate can improve average score while regressing an important case from .8 to .2. Gate aggregate improvement and per-slice regressions. Record prompt version, retrieval index, decoding settings, and test-set provenance so results are reproducible."
+    }
+  ],
+  "quick": {
+    "scenario": "Can a better mean score hide a severe regression on one important case? Answer yes/no.",
+    "prediction": "yes",
+    "explanation": "A candidate can improve average score while regressing an important case from .8 to .2. Gate aggregate improvement and per-slice regressions. Record prompt version, retrieval index, decoding settings, and test-set provenance so results are reproducible.",
+    "challenge": "State the rule that explains your observation, then apply it: Can a better mean score hide a severe regression on one important case? Answer yes/no.",
+    "answer": "yes"
+  },
+  "coach": {
+    "forbiddenTerms": [],
+    "prerequisites": [
+      "lesson-llm-evaluation-harnesses"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "question": "In your own words, what are the inputs, the required output, and one boundary case?",
+        "insights": [
+          [
+            "input",
+            "given",
+            "receive"
+          ],
+          [
+            "output",
+            "return",
+            "result"
+          ],
+          [
+            "empty",
+            "single",
+            "zero",
+            "boundary",
+            "missing"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "boundary",
+            "question": "What is the smallest legal input, and what should happen to it?"
+          }
+        ]
+      },
+      {
+        "id": "trace",
+        "question": "Work through the first example by hand. What changes after each step?",
+        "insights": [
+          [
+            "first",
+            "step",
+            "start"
+          ],
+          [
+            "then",
+            "next",
+            "after"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "step",
+            "question": "Write the state before and after just the first step."
+          }
+        ]
+      },
+      {
+        "id": "baseline",
+        "question": "Describe a direct approach, even if it repeats work. How many steps could it take?",
+        "insights": [
+          [
+            "each",
+            "every",
+            "all"
+          ],
+          [
+            "time",
+            "steps",
+            "o(",
+            "operations"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "time",
+            "question": "If the input doubled, about how much more work would that approach do?"
+          }
+        ]
+      },
+      {
+        "id": "bottleneck",
+        "question": "Which question does your approach answer repeatedly? What could you remember between steps?",
+        "insights": [
+          [
+            "repeat",
+            "again",
+            "reuse",
+            "remember",
+            "store",
+            "cache"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "repeat",
+            "question": "Circle two steps that recompute the same fact. What is that fact?"
+          }
+        ]
+      },
+      {
+        "id": "discover",
+        "question": "What information must remain true after each step for the next decision to be safe?",
+        "insights": [
+          [
+            "keep",
+            "true",
+            "invariant",
+            "maintain",
+            "state"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Describe the information you would keep, without choosing any code yet."
+          }
+        ]
+      },
+      {
+        "id": "plan",
+        "question": "Write your plan in plain steps. What happens with equal values, missing values, or the final item?",
+        "insights": [
+          [
+            "if",
+            "when"
+          ],
+          [
+            "return",
+            "result",
+            "finish",
+            "output"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "finish",
+            "question": "How will you know you are done, and what will you return?"
+          }
+        ]
+      },
+      {
+        "id": "implement",
+        "question": "Implement your plan in the editor. Which part will you test first?",
+        "insights": [
+          [
+            "test",
+            "case",
+            "check",
+            "run"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "test",
+            "question": "Choose one input where a small mistake would be visible immediately."
+          }
+        ]
+      },
+      {
+        "id": "debug",
+        "question": "Trace a test input. At which step could the actual state first differ from your intended state?",
+        "insights": [
+          [
+            "state",
+            "step",
+            "expected",
+            "actual",
+            "match"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "state",
+            "question": "Write one expected intermediate value and compare it with your output."
+          }
+        ]
+      },
+      {
+        "id": "reflect",
+        "question": "State time and extra-space costs and why. What would change for a million items?",
+        "insights": [
+          [
+            "time",
+            "o("
+          ],
+          [
+            "space",
+            "memory"
+          ]
+        ],
+        "followups": [
+          {
+            "missing": "space",
+            "question": "Which stored values grow with the input, rather than staying fixed?"
+          }
+        ]
+      }
+    ],
+    "stuck": [
+      "Restate just the output requirement. What would a correct result look like for one tiny input?",
+      "Try a smaller version with only two items. What decisions are possible?",
+      "Mini-exercise: write a two-row table showing input, your current state, and the next decision. Which fact is missing?",
+      "Pause and read the prerequisite lesson on LLM evaluation harnesses. Return with one rule in your own words."
+    ]
+  },
+  "career": {
+    "skills": [
+      "LLM evaluation harnesses"
+    ],
+    "keywords": [
+      "LLM evaluation harnesses",
+      "AI/ML evaluation"
+    ],
+    "questions": [
+      "What invariant makes LLM evaluation harnesses reliable?",
+      "When would LLM evaluation harnesses fail or become expensive?",
+      "How would you test LLM evaluation harnesses at its boundaries?"
+    ],
+    "outline": "State the goal, explain LLM evaluation harnesses using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Grounded retrieval evaluation lab",
+        "scope": "Build a retriever over public documents and measure retrieval recall and citation support on a held-out set.",
+        "stack": "Python, NumPy, SQLite",
+        "readme": "Describe dataset provenance, baselines, failure analysis, and measured results."
+      }
+    ]
+  },
+  "related": [
+    "evaluation-regression-gate"
+  ],
+  "prerequisites": [
+    "lesson-prompt-engineering-and-agents"
+  ]
+}

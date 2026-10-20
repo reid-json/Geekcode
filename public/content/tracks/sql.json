@@ -1,0 +1,31 @@
+{
+  "id": "sql",
+  "title": "SQL & Databases",
+  "short": "Databases",
+  "code": "05",
+  "color": "#f49bc2",
+  "description": "Ask better questions of your data. Understand the plan.",
+  "career": {
+    "skills": [
+      "Relational query design"
+    ],
+    "keywords": [
+      "Relational query design",
+      "sql"
+    ],
+    "questions": [
+      "What invariant makes Relational query design reliable?",
+      "When would Relational query design fail or become expensive?",
+      "How would you test Relational query design at its boundaries?"
+    ],
+    "outline": "State the goal, explain Relational query design using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Query performance notebook",
+        "scope": "Model an order database and compare query plans before and after indexing.",
+        "stack": "SQLite, Python",
+        "readme": "Include schema, seed generator, transactions, EXPLAIN output, and repeatable timings."
+      }
+    ]
+  }
+}

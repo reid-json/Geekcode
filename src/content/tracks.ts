@@ -1,0 +1,58 @@
+import { career, type Track } from './schema';
+
+export const tracks: Track[] = [
+  {
+    id: 'dsa',
+    title: 'Data Structures & Algorithms',
+    short: 'Algorithms',
+    code: '01',
+    color: '#b5f36c',
+    description: 'Find the pattern. Prove the invariant. Make it fast.',
+    career: career('Algorithms and complexity', 'dsa'),
+  },
+  {
+    id: 'syntax',
+    title: 'Language Syntax & Idioms',
+    short: 'Languages',
+    code: '02',
+    color: '#bca4ff',
+    description: 'Turn familiar ideas into fluent, idiomatic code.',
+    career: career('Language fluency', 'syntax'),
+  },
+  {
+    id: 'devops',
+    title: 'DevOps & Infrastructure',
+    short: 'DevOps',
+    code: '03',
+    color: '#ffbf78',
+    description: 'Build, ship, debug. Know what your tools actually do.',
+    career: career('Reliable delivery', 'devops'),
+  },
+  {
+    id: 'ai',
+    title: 'AI / ML Engineering',
+    short: 'AI / ML',
+    code: '04',
+    color: '#77dce8',
+    description: 'From gradients to grounded answers. Measure everything.',
+    career: career('Model and retrieval evaluation', 'ai'),
+  },
+  {
+    id: 'sql',
+    title: 'SQL & Databases',
+    short: 'Databases',
+    code: '05',
+    color: '#f49bc2',
+    description: 'Ask better questions of your data. Understand the plan.',
+    career: career('Relational query design', 'sql'),
+  },
+  {
+    id: 'systems',
+    title: 'System Design',
+    short: 'Systems',
+    code: '06',
+    color: '#83b7ff',
+    description: 'Reason about scale, failure, and the tradeoffs between.',
+    career: career('Distributed systems reasoning', 'systems'),
+  },
+];

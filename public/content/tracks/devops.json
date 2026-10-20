@@ -1,0 +1,31 @@
+{
+  "id": "devops",
+  "title": "DevOps & Infrastructure",
+  "short": "DevOps",
+  "code": "03",
+  "color": "#ffbf78",
+  "description": "Build, ship, debug. Know what your tools actually do.",
+  "career": {
+    "skills": [
+      "Reliable delivery"
+    ],
+    "keywords": [
+      "Reliable delivery",
+      "devops"
+    ],
+    "questions": [
+      "What invariant makes Reliable delivery reliable?",
+      "When would Reliable delivery fail or become expensive?",
+      "How would you test Reliable delivery at its boundaries?"
+    ],
+    "outline": "State the goal, explain Reliable delivery using a concrete practice example, identify a tradeoff, and describe an edge-case test. Distinguish practice from production experience.",
+    "projects": [
+      {
+        "title": "Reproducible delivery lab",
+        "scope": "Containerize a small app, build a CI pipeline, and document rollback and recovery drills.",
+        "stack": "Docker, GitHub Actions, Kubernetes",
+        "readme": "Include deployment manifests, threat assumptions, health checks, and a runbook."
+      }
+    ]
+  }
+}

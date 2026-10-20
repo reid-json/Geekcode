@@ -1,0 +1,2522 @@
+[
+  {
+    "front": "Explain Arrays and strings in your own words.",
+    "back": "Contiguous storage makes indexed access constant-time, but inserting near the beginning shifts later elements. Separate the cost of finding a position from modifying the sequence. Strings may be immutable: repeatedly appending to a string can allocate and copy the entire prefix. Java char and JavaScript string indices refer to UTF-16 code units, not necessarily user-perceived characters.",
+    "id": "lesson-arrays-and-strings:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-arrays-and-strings"
+  },
+  {
+    "front": "For [-5,-2,-7], what is the maximum nonempty contiguous sum?",
+    "back": "-2",
+    "id": "lesson-arrays-and-strings:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-arrays-and-strings"
+  },
+  {
+    "front": "What is a common trap in Arrays and strings?",
+    "back": "Initializing a maximum-subarray answer to zero incorrectly permits an empty answer when all values are negative. Returning a view versus a copy also changes mutation behavior.",
+    "id": "lesson-arrays-and-strings:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-arrays-and-strings"
+  },
+  {
+    "front": "What decision rule should you retain for Arrays and strings?",
+    "back": "Define the unit of indexing, mutation contract, and whether empty selections are legal before choosing a loop.",
+    "id": "lesson-arrays-and-strings:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-arrays-and-strings"
+  },
+  {
+    "front": "Walk through a concrete example of Arrays and strings.",
+    "back": "For [4,-1,2], the best nonempty interval ending at the second position is [4,-1] with sum 3. At the third position, extending it gives 5 versus starting fresh with 2. Retaining only that ending-state and the global best avoids enumerating every interval.",
+    "id": "lesson-arrays-and-strings:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-arrays-and-strings"
+  },
+  {
+    "front": "Explain Hash maps in your own words.",
+    "back": "A hash map indexes keys by a hash and resolves collisions using an implementation-specific strategy. Expected constant-time lookup is not a worst-case guarantee. Key equality must agree with hashing: equal keys require equal hashes. Java mutable object keys become dangerous when fields used by equals/hashCode change after insertion.",
+    "id": "lesson-hash-maps:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-hash-maps"
+  },
+  {
+    "front": "A map begins empty. Reading getOrDefault(\"x\",3) without inserting leaves its size at what value?",
+    "back": "0",
+    "id": "lesson-hash-maps:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-hash-maps"
+  },
+  {
+    "front": "What is a common trap in Hash maps?",
+    "back": "Using a map for an ordered result requires knowing whether insertion order is preserved. Java HashMap does not promise it; LinkedHashMap does.",
+    "id": "lesson-hash-maps:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-hash-maps"
+  },
+  {
+    "front": "What decision rule should you retain for Hash maps?",
+    "back": "Write the meaning of one map entry and the moment it becomes valid. Test collisions semantically through equal keys and duplicate values.",
+    "id": "lesson-hash-maps:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-hash-maps"
+  },
+  {
+    "front": "Walk through a concrete example of Hash maps.",
+    "back": "To count [a,b,a], process a→1, b→1, then a→2. For a target-pair search, ask whether the complement appeared earlier before recording the current position. This ordering prevents one element from matching itself.",
+    "id": "lesson-hash-maps:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-hash-maps"
+  },
+  {
+    "front": "Explain Prefix sums in your own words.",
+    "back": "A prefix array stores cumulative totals at boundaries rather than at elements. Define P[0]=0 and P[i+1]=P[i]+a[i]. Then the inclusive range [l,r] has sum P[r+1]-P[l]. This turns repeated range queries into constant-time reads after linear preprocessing, but updating one element invalidates all later prefixes.",
+    "id": "lesson-prefix-sums:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-prefix-sums"
+  },
+  {
+    "front": "For [2,-1,4], what is the inclusive sum from index 1 to 2?",
+    "back": "3",
+    "id": "lesson-prefix-sums:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-prefix-sums"
+  },
+  {
+    "front": "What is a common trap in Prefix sums?",
+    "back": "Inserting the current prefix before querying frequencies counts a zero-length interval for target zero. Negative values also invalidate the usual positive-sum shrinking-window shortcut.",
+    "id": "lesson-prefix-sums:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-prefix-sums"
+  },
+  {
+    "front": "What decision rule should you retain for Prefix sums?",
+    "back": "Treat prefixes as boundaries. Query before inserting the current boundary when counting nonempty intervals.",
+    "id": "lesson-prefix-sums:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-prefix-sums"
+  },
+  {
+    "front": "Walk through a concrete example of Prefix sums.",
+    "back": "For [2,-1,4], P=[0,2,1,5]. The range [1,2] sums to P[3]-P[1]=3. To count target-sum intervals, retain frequencies of earlier prefixes: an earlier prefix equal to current-target identifies a valid interval.",
+    "id": "lesson-prefix-sums:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-prefix-sums"
+  },
+  {
+    "front": "Explain Two pointers in your own words.",
+    "back": "Two boundaries can eliminate candidates efficiently when a monotonic relationship proves discarded candidates cannot be answers. On a sorted array, if the smallest-plus-largest sum is too small, keeping the smallest while reducing the largest cannot help. This proof, not the existence of two variables, is the pattern.",
+    "id": "lesson-two-pointers:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-two-pointers"
+  },
+  {
+    "front": "In sorted [1,2,4,7], 1+7 is below 9. Which endpoint must move: left or right?",
+    "back": "left",
+    "id": "lesson-two-pointers:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-two-pointers"
+  },
+  {
+    "front": "What is a common trap in Two pointers?",
+    "back": "Moving both boundaries after an inequality can skip a valid answer. Duplicate handling depends on whether the result is indices, value pairs, or unique triples.",
+    "id": "lesson-two-pointers:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-two-pointers"
+  },
+  {
+    "front": "What decision rule should you retain for Two pointers?",
+    "back": "For each boundary move, explain why every candidate you discard is impossible or already represented.",
+    "id": "lesson-two-pointers:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-two-pointers"
+  },
+  {
+    "front": "Walk through a concrete example of Two pointers.",
+    "back": "In [1,2,4,7] seeking 9, endpoints sum to 8, so discard 1. Now 2+7=9. A palindrome check uses symmetric boundaries for a different invariant: all already-compared outer pairs match.",
+    "id": "lesson-two-pointers:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-two-pointers"
+  },
+  {
+    "front": "Explain Sliding window in your own words.",
+    "back": "A window maintains an aggregate over one contiguous interval while each boundary moves only forward. This yields linear work if adding/removing one item is constant-time. Validity must be maintainable: a positive-sum threshold is monotone under expansion, while arbitrary negative values can destroy that reasoning.",
+    "id": "lesson-sliding-window:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-sliding-window"
+  },
+  {
+    "front": "What is the longest no-repeat substring length in abba?",
+    "back": "2",
+    "id": "lesson-sliding-window:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-sliding-window"
+  },
+  {
+    "front": "What is a common trap in Sliding window?",
+    "back": "Confusing at-most and exactly constraints causes off-by-one errors. For multiplicities, a set alone loses counts needed when the leftmost duplicate exits.",
+    "id": "lesson-sliding-window:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-sliding-window"
+  },
+  {
+    "front": "What decision rule should you retain for Sliding window?",
+    "back": "State what makes the current interval valid and which boundary movement restores validity after each extension.",
+    "id": "lesson-sliding-window:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-sliding-window"
+  },
+  {
+    "front": "Walk through a concrete example of Sliding window.",
+    "back": "For unique characters in abba, the second b forces the left boundary beyond the first b. On the final a, an old occurrence lies outside the window; moving left backward would incorrectly produce length 3. Use max(currentLeft,lastIndex+1).",
+    "id": "lesson-sliding-window:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-sliding-window"
+  },
+  {
+    "front": "Explain Stacks and queues in your own words.",
+    "back": "A stack resolves the most recent unfinished work; a queue processes the earliest discovered work. Both are abstractions, not a mandate to use a specific class. Array shift in JavaScript may move all remaining elements; a head index avoids repeated copying. A monotonic stack retains unresolved candidates in value order.",
+    "id": "lesson-stacks-and-queues:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-stacks-and-queues"
+  },
+  {
+    "front": "For [70,72,71], how many days does the first day wait for a warmer day?",
+    "back": "1",
+    "id": "lesson-stacks-and-queues:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-stacks-and-queues"
+  },
+  {
+    "front": "What is a common trap in Stacks and queues?",
+    "back": "Equal values are not strictly greater. For bracket nesting, matching counts is insufficient: ([)] has balanced counts but invalid order.",
+    "id": "lesson-stacks-and-queues:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-stacks-and-queues"
+  },
+  {
+    "front": "What decision rule should you retain for Stacks and queues?",
+    "back": "Count total pushes and pops across the whole run instead of multiplying loop bounds mechanically.",
+    "id": "lesson-stacks-and-queues:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-stacks-and-queues"
+  },
+  {
+    "front": "Walk through a concrete example of Stacks and queues.",
+    "back": "For temperatures [70,72,71], index 0 waits until index 1 arrives, then is resolved with distance 1. Indices 1 and 2 remain unresolved. Every index is pushed once and popped at most once, so the nested while loop is amortized linear.",
+    "id": "lesson-stacks-and-queues:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-stacks-and-queues"
+  },
+  {
+    "front": "Explain Linked lists in your own words.",
+    "back": "A node links to another node rather than occupying a contiguous logical position. Inserting after a known node can be constant-time, but finding that node remains linear. Ownership and aliasing matter: reversing links mutates every shared view of the chain unless you copy nodes.",
+    "id": "lesson-linked-lists:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-linked-lists"
+  },
+  {
+    "front": "In a one-node acyclic list, how many next-link hops reach null?",
+    "back": "1",
+    "id": "lesson-linked-lists:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-linked-lists"
+  },
+  {
+    "front": "What is a common trap in Linked lists?",
+    "back": "Overwriting next before saving it loses the rest of the chain. Testing only fast!=null is insufficient when the next dereference also uses fast.next.",
+    "id": "lesson-linked-lists:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-linked-lists"
+  },
+  {
+    "front": "What decision rule should you retain for Linked lists?",
+    "back": "Draw pointer states before and after each assignment, including the null boundary and any shared references.",
+    "id": "lesson-linked-lists:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-linked-lists"
+  },
+  {
+    "front": "Walk through a concrete example of Linked lists.",
+    "back": "To reverse A→B→C, preserve next=B before setting A.next=null; then advance to B. A cycle detector moves one pointer by one and another by two. If they meet, resetting one to the head and moving equally locates the cycle entry.",
+    "id": "lesson-linked-lists:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-linked-lists"
+  },
+  {
+    "front": "Explain Trees and BSTs in your own words.",
+    "back": "Tree recursion summarizes subtrees. Choose exactly what each recursive call returns: height, validity, best path, or a combination. A BST adds an ordering invariant, not a balance guarantee. An ascending insertion sequence can produce a chain and turn logarithmic expectations into linear depth.",
+    "id": "lesson-trees-and-bsts:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-trees-and-bsts"
+  },
+  {
+    "front": "A root with two leaf children has maximum depth in nodes equal to what?",
+    "back": "2",
+    "id": "lesson-trees-and-bsts:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-trees-and-bsts"
+  },
+  {
+    "front": "What is a common trap in Trees and BSTs?",
+    "back": "Checking a BST only against immediate children misses an out-of-range grandchild. Propagate bounds from all ancestors and decide whether duplicates are allowed.",
+    "id": "lesson-trees-and-bsts:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-trees-and-bsts"
+  },
+  {
+    "front": "What decision rule should you retain for Trees and BSTs?",
+    "back": "Write the subtree contract and choose node-count versus edge-count units explicitly.",
+    "id": "lesson-trees-and-bsts:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-trees-and-bsts"
+  },
+  {
+    "front": "Walk through a concrete example of Trees and BSTs.",
+    "back": "For root 2 with children 1 and 3, inorder traversal emits [1,2,3]. Height in nodes is 2, while the diameter in edges is 2. A balance check can return -1 for an invalid subtree to avoid recalculating heights at every ancestor.",
+    "id": "lesson-trees-and-bsts:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-trees-and-bsts"
+  },
+  {
+    "front": "Explain Heaps in your own words.",
+    "back": "A binary heap maintains an extremum at the root with a partial order, not a fully sorted array. Push and root removal cost logarithmic time; peeking costs constant time. A size-k min-heap is useful when retaining the k largest values: its smallest retained item is the current cutoff.",
+    "id": "lesson-heaps:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-heaps"
+  },
+  {
+    "front": "What is the second largest value in [3,1,5,2]?",
+    "back": "3",
+    "id": "lesson-heaps:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-heaps"
+  },
+  {
+    "front": "What is a common trap in Heaps?",
+    "back": "Iterating a heap does not produce sorted order. Negating values to emulate a max-heap requires care with fixed-width minimum integers and tie-breaking metadata.",
+    "id": "lesson-heaps:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-heaps"
+  },
+  {
+    "front": "What decision rule should you retain for Heaps?",
+    "back": "Define whether the heap root is the next answer or merely the boundary of retained candidates.",
+    "id": "lesson-heaps:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-heaps"
+  },
+  {
+    "front": "Walk through a concrete example of Heaps.",
+    "back": "Streaming [3,1,5,2] with k=2 retains [3], then [1,3], then discards 1 after adding 5, then discards 2. The root is 3, the second largest value. For merging sorted streams, heap entries also need stream identity and position.",
+    "id": "lesson-heaps:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-heaps"
+  },
+  {
+    "front": "Explain Graph BFS and DFS in your own words.",
+    "back": "Graph traversal needs an explicit visited policy because cycles and converging edges can revisit vertices. BFS discovers shortest edge-count paths in unweighted graphs by layers. DFS is useful for reachability, cycle states, and finishing order, but its first found route need not be shortest.",
+    "id": "lesson-graph-bfs-and-dfs:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-graph-bfs-and-dfs"
+  },
+  {
+    "front": "In the example, what is the shortest edge-count distance from 0 to 3?",
+    "back": "2",
+    "id": "lesson-graph-bfs-and-dfs:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-graph-bfs-and-dfs"
+  },
+  {
+    "front": "What is a common trap in Graph BFS and DFS?",
+    "back": "An adjacency matrix uses O(V²) space even for sparse graphs. Recursive DFS can overflow the call stack on a long chain; use an explicit stack for untrusted depth.",
+    "id": "lesson-graph-bfs-and-dfs:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-graph-bfs-and-dfs"
+  },
+  {
+    "front": "What decision rule should you retain for Graph BFS and DFS?",
+    "back": "Choose mark-on-discovery and record exactly which invariant permits skipping an already visited vertex.",
+    "id": "lesson-graph-bfs-and-dfs:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-graph-bfs-and-dfs"
+  },
+  {
+    "front": "Walk through a concrete example of Graph BFS and DFS.",
+    "back": "With edges 0→1, 0→2, 1→3, 2→3, BFS sets distances [0,1,1,2]. Mark 3 when it is enqueued so the second parent does not enqueue it again. Disconnected graph properties require starting another traversal at every unvisited component.",
+    "id": "lesson-graph-bfs-and-dfs:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-graph-bfs-and-dfs"
+  },
+  {
+    "front": "Explain Dijkstra in your own words.",
+    "back": "For nonnegative weighted edges, finalize the unsettled vertex with smallest tentative distance. No route through a farther unsettled vertex can improve it, because adding nonnegative weight cannot reduce distance. A binary heap supports sparse graphs; a simple array scan is reasonable for small dense graphs.",
+    "id": "lesson-dijkstra:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-dijkstra"
+  },
+  {
+    "front": "Using the example edges, what is the distance from 0 to 2?",
+    "back": "3",
+    "id": "lesson-dijkstra:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-dijkstra"
+  },
+  {
+    "front": "What is a common trap in Dijkstra?",
+    "back": "Negative edges invalidate the finalization proof. Marking a vertex visited when first inserted also incorrectly prevents later improvements.",
+    "id": "lesson-dijkstra:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-dijkstra"
+  },
+  {
+    "front": "What decision rule should you retain for Dijkstra?",
+    "back": "Tentative discovery and final settlement are different events. Guard stale priority-queue entries.",
+    "id": "lesson-dijkstra:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-dijkstra"
+  },
+  {
+    "front": "Walk through a concrete example of Dijkstra.",
+    "back": "Edges 0→1 cost 2, 0→2 cost 7, and 1→2 cost 1 yield distances [0,2,3]. A heap may still contain a stale entry (7,2); skip it because the current best is already 3.",
+    "id": "lesson-dijkstra:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-dijkstra"
+  },
+  {
+    "front": "Explain Topological sort in your own words.",
+    "back": "A directed acyclic graph admits an ordering in which every edge points forward. Kahn’s algorithm repeatedly removes zero-indegree vertices; DFS can instead reverse finishing order while detecting gray-state back edges. Neither method creates a valid order for a cyclic graph.",
+    "id": "lesson-topological-sort:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-topological-sort"
+  },
+  {
+    "front": "Can the directed cycle 0→1→0 have a topological order? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-topological-sort:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-topological-sort"
+  },
+  {
+    "front": "What is a common trap in Topological sort?",
+    "back": "Returning a partial list without checking its length conceals a cycle. A directed graph may have a cycle in a disconnected component.",
+    "id": "lesson-topological-sort:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-topological-sort"
+  },
+  {
+    "front": "What decision rule should you retain for Topological sort?",
+    "back": "Only schedule tasks whose prerequisites are all satisfied, and verify every task was scheduled.",
+    "id": "lesson-topological-sort:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-topological-sort"
+  },
+  {
+    "front": "Walk through a concrete example of Topological sort.",
+    "back": "With 0→2 and 1→2, both 0 and 1 are initially ready. A priority queue gives the lexicographically smallest order [0,1,2]. If only a plain FIFO queue is used, a valid but different order may result.",
+    "id": "lesson-topological-sort:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-topological-sort"
+  },
+  {
+    "front": "Explain Union-find in your own words.",
+    "back": "Disjoint-set union answers whether items belong to the same evolving undirected component. Path compression shortens future searches; union by rank or size prevents tall trees. Together they yield near-constant amortized operations, expressed with inverse Ackermann α(n). It does not directly support deleting arbitrary edges.",
+    "id": "lesson-union-find:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-union-find"
+  },
+  {
+    "front": "With four vertices and edges (0,1),(1,2),(0,2), how many components remain?",
+    "back": "2",
+    "id": "lesson-union-find:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-union-find"
+  },
+  {
+    "front": "What is a common trap in Union-find?",
+    "back": "Decrementing the count for every edge undercounts when edges are redundant. Representative IDs are implementation details, not stable domain labels.",
+    "id": "lesson-union-find:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-union-find"
+  },
+  {
+    "front": "What decision rule should you retain for Union-find?",
+    "back": "Update component metadata only when two distinct representatives actually merge.",
+    "id": "lesson-union-find:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-union-find"
+  },
+  {
+    "front": "Walk through a concrete example of Union-find.",
+    "back": "Start with four components. Union(0,1) reduces the count to three; union(1,2) reduces it to two. Union(0,2) changes nothing because both already share a representative.",
+    "id": "lesson-union-find:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-union-find"
+  },
+  {
+    "front": "Explain Tries in your own words.",
+    "back": "A trie shares common prefixes among keys. Each edge consumes a symbol; a terminal marker distinguishes a complete word from a prefix. Prefix-count metadata can answer how many inserted words share a prefix without enumerating descendants. Complexity depends on total characters rather than number of whole strings alone.",
+    "id": "lesson-tries:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-tries"
+  },
+  {
+    "front": "How many of car, cart, cat begin with car?",
+    "back": "2",
+    "id": "lesson-tries:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-tries"
+  },
+  {
+    "front": "What is a common trap in Tries?",
+    "back": "Using a normal object for arbitrary symbol keys can collide with inherited properties. Separate metadata from children and use Map or a prototype-free dictionary.",
+    "id": "lesson-tries:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-tries"
+  },
+  {
+    "front": "What decision rule should you retain for Tries?",
+    "back": "Distinguish path existence, whole-word membership, and how many words pass through a node.",
+    "id": "lesson-tries:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-tries"
+  },
+  {
+    "front": "Walk through a concrete example of Tries.",
+    "back": "Insert car, cart, and cat. The node for ca has count 3; car has count 2 and a terminal marker. The empty prefix corresponds to the root and matches every inserted word.",
+    "id": "lesson-tries:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-tries"
+  },
+  {
+    "front": "Explain Recursion and backtracking in your own words.",
+    "back": "Backtracking explores choices while maintaining a partial candidate. Choose, recurse, and undo is an ownership discipline: each sibling branch must see the same starting state. Pruning requires proof that an incomplete candidate cannot lead to a valid completion.",
+    "id": "lesson-recursion-and-backtracking:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-recursion-and-backtracking"
+  },
+  {
+    "front": "How many subsets does a distinct three-element set have?",
+    "back": "8",
+    "id": "lesson-recursion-and-backtracking:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-recursion-and-backtracking"
+  },
+  {
+    "front": "What is a common trap in Recursion and backtracking?",
+    "back": "Appending the same mutable path object to output stores aliases; copy it at a leaf. Reusable candidates with zero or negative values can prevent a sum search from terminating.",
+    "id": "lesson-recursion-and-backtracking:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-recursion-and-backtracking"
+  },
+  {
+    "front": "What decision rule should you retain for Recursion and backtracking?",
+    "back": "State the decreasing measure that guarantees termination and restore every branch-local mutation.",
+    "id": "lesson-recursion-and-backtracking:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-recursion-and-backtracking"
+  },
+  {
+    "front": "Walk through a concrete example of Recursion and backtracking.",
+    "back": "For subsets of [1,2], advancing the candidate start index produces [],[1],[1,2],[2] once each. For a grid word search, mark cells only along the active path and unmark on return; another starting path may legitimately reuse them.",
+    "id": "lesson-recursion-and-backtracking:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-recursion-and-backtracking"
+  },
+  {
+    "front": "Explain Dynamic programming 1D in your own words.",
+    "back": "Dynamic programming caches a well-defined subproblem so repeated dependencies are evaluated once. Write the state in a sentence, then derive transitions and base cases. Rolling memory is safe only when overwritten values will never be needed again.",
+    "id": "lesson-dynamic-programming-1d:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-1d"
+  },
+  {
+    "front": "How many ways climb 3 steps using steps of 1 or 2?",
+    "back": "3",
+    "id": "lesson-dynamic-programming-1d:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-1d"
+  },
+  {
+    "front": "What is a common trap in Dynamic programming 1D?",
+    "back": "Copying a recurrence without interpreting its base case often causes off-by-one errors. Memoization does not make an exponential number of distinct states polynomial.",
+    "id": "lesson-dynamic-programming-1d:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-1d"
+  },
+  {
+    "front": "What decision rule should you retain for Dynamic programming 1D?",
+    "back": "Count distinct states times transition work, and separately count the memory actually retained.",
+    "id": "lesson-dynamic-programming-1d:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-1d"
+  },
+  {
+    "front": "Walk through a concrete example of Dynamic programming 1D.",
+    "back": "Ways to climb n using 1 or 2 steps satisfy ways(n)=ways(n-1)+ways(n-2). ways(0)=1 represents the empty construction. For nonadjacent rewards, the states are best with previous taken and best with previous skipped, updated simultaneously.",
+    "id": "lesson-dynamic-programming-1d:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-1d"
+  },
+  {
+    "front": "Explain Dynamic programming 2D in your own words.",
+    "back": "Two-dimensional states often describe two prefixes, two resources, or a grid position. Fill order must respect dependencies. A longest common subsequence state L[i][j] means the best common subsequence of the first i and first j characters, not necessarily contiguous.",
+    "id": "lesson-dynamic-programming-2d:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-2d"
+  },
+  {
+    "front": "What is the longest common subsequence length of abc and ac?",
+    "back": "2",
+    "id": "lesson-dynamic-programming-2d:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-2d"
+  },
+  {
+    "front": "What is a common trap in Dynamic programming 2D?",
+    "back": "Substring and subsequence are different contracts. Reusing the current row where the previous diagonal was needed silently changes the recurrence.",
+    "id": "lesson-dynamic-programming-2d:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-2d"
+  },
+  {
+    "front": "What decision rule should you retain for Dynamic programming 2D?",
+    "back": "Draw dependency arrows before optimizing a table into rolling rows.",
+    "id": "lesson-dynamic-programming-2d:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-2d"
+  },
+  {
+    "front": "Walk through a concrete example of Dynamic programming 2D.",
+    "back": "For abc and ac, a match extends the diagonal; a mismatch chooses max(top,left). The result is 2. Edit distance adds insertion, deletion, and replacement predecessors and initializes empty-prefix distances to their lengths.",
+    "id": "lesson-dynamic-programming-2d:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-2d"
+  },
+  {
+    "front": "Explain Dynamic programming knapsack in your own words.",
+    "back": "A zero-one knapsack state can mean best value using processed items within capacity c. Each item may be used once. With one row, iterate capacities backward so the current item reads only states from before that item. For unbounded knapsack, forward iteration deliberately allows reuse.",
+    "id": "lesson-dynamic-programming-knapsack:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-knapsack"
+  },
+  {
+    "front": "For one weight-2 value-3 item and capacity 4, what is the zero-one optimum?",
+    "back": "3",
+    "id": "lesson-dynamic-programming-knapsack:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-knapsack"
+  },
+  {
+    "front": "What is a common trap in Dynamic programming knapsack?",
+    "back": "A capacity-based O(nC) algorithm is pseudo-polynomial: numeric capacity may be exponentially large in its bit representation. Weight-zero items need an explicit policy.",
+    "id": "lesson-dynamic-programming-knapsack:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-knapsack"
+  },
+  {
+    "front": "What decision rule should you retain for Dynamic programming knapsack?",
+    "back": "Derive loop direction from which version of the state a transition is allowed to read.",
+    "id": "lesson-dynamic-programming-knapsack:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-knapsack"
+  },
+  {
+    "front": "Walk through a concrete example of Dynamic programming knapsack.",
+    "back": "One item of weight 2 and value 3 with capacity 4 yields 3 in zero-one knapsack. A forward loop updates dp[2]=3 then dp[4]=dp[2]+3=6, accidentally selecting it twice.",
+    "id": "lesson-dynamic-programming-knapsack:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-knapsack"
+  },
+  {
+    "front": "Explain Dynamic programming LIS in your own words.",
+    "back": "For strictly increasing subsequences, keep tails[len-1] as the smallest ending value achievable for that length. Replacing a tail with a smaller value preserves the length and improves future extension opportunities. Binary search finds the first tail >= the incoming value.",
+    "id": "lesson-dynamic-programming-lis:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-lis"
+  },
+  {
+    "front": "What is the strictly increasing subsequence length of [2,2,2]?",
+    "back": "1",
+    "id": "lesson-dynamic-programming-lis:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-lis"
+  },
+  {
+    "front": "What is a common trap in Dynamic programming LIS?",
+    "back": "Using upper_bound instead of lower_bound changes strict increase into nondecreasing behavior when values repeat.",
+    "id": "lesson-dynamic-programming-lis:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-lis"
+  },
+  {
+    "front": "What decision rule should you retain for Dynamic programming LIS?",
+    "back": "State whether equality extends a sequence before selecting the binary-search boundary.",
+    "id": "lesson-dynamic-programming-lis:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-lis"
+  },
+  {
+    "front": "Walk through a concrete example of Dynamic programming LIS.",
+    "back": "Processing [3,1,2] gives tails [3], then [1], then [1,2], so the answer is 2. The tails array itself is not guaranteed to be an actual subsequence after arbitrary replacements; reconstruction needs predecessor metadata.",
+    "id": "lesson-dynamic-programming-lis:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-lis"
+  },
+  {
+    "front": "Explain Dynamic programming interval in your own words.",
+    "back": "Interval DP combines shorter contiguous ranges. A useful approach is to decide the final split or final action for [l,r], so both remaining subproblems are smaller intervals. Fill by increasing length rather than by arbitrary row order.",
+    "id": "lesson-dynamic-programming-interval:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-interval"
+  },
+  {
+    "front": "What is the optimal scalar multiplication cost for dimensions [10,30,5,60]?",
+    "back": "4500",
+    "id": "lesson-dynamic-programming-interval:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-interval"
+  },
+  {
+    "front": "What is a common trap in Dynamic programming interval?",
+    "back": "The dimension array has one more entry than the matrix count. Confusing matrix endpoints with dimension endpoints corrupts the multiplication term.",
+    "id": "lesson-dynamic-programming-interval:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-interval"
+  },
+  {
+    "front": "What decision rule should you retain for Dynamic programming interval?",
+    "back": "Define inclusive/exclusive interval endpoints and prove every dependency has smaller length.",
+    "id": "lesson-dynamic-programming-interval:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-interval"
+  },
+  {
+    "front": "Walk through a concrete example of Dynamic programming interval.",
+    "back": "Matrices 10×30, 30×5, 5×60 cost 10*30*5 + 10*5*60 = 4500 when the first two are multiplied first. The other parenthesization costs 27000. Matrix multiplication is associative in result but not in computational cost.",
+    "id": "lesson-dynamic-programming-interval:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-interval"
+  },
+  {
+    "front": "Explain Dynamic programming bitmask in your own words.",
+    "back": "When the set of already used items matters and n is small, encode membership with n bits. A state (mask,last) identifies both the visited subset and the final position. There are n*2^n such states; adding a transition to every unused item costs another factor n.",
+    "id": "lesson-dynamic-programming-bitmask:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-bitmask"
+  },
+  {
+    "front": "How many subsets are represented by four bits?",
+    "back": "16",
+    "id": "lesson-dynamic-programming-bitmask:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-bitmask"
+  },
+  {
+    "front": "What is a common trap in Dynamic programming bitmask?",
+    "back": "JavaScript bitwise operators use 32-bit signed integers. This technique is intended for small n, and shifting beyond its supported width is invalid.",
+    "id": "lesson-dynamic-programming-bitmask:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-bitmask"
+  },
+  {
+    "front": "What decision rule should you retain for Dynamic programming bitmask?",
+    "back": "Check feasibility with actual state counts before allocating an exponential table.",
+    "id": "lesson-dynamic-programming-bitmask:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-bitmask"
+  },
+  {
+    "front": "Walk through a concrete example of Dynamic programming bitmask.",
+    "back": "For three cities, mask 101 means cities 0 and 2 were visited. Adding city 1 gives 111. A tour must also pay the final edge back to city 0; visiting all cities alone is only a path.",
+    "id": "lesson-dynamic-programming-bitmask:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-dynamic-programming-bitmask"
+  },
+  {
+    "front": "Explain Greedy in your own words.",
+    "back": "A greedy method makes an irreversible local choice. Correctness needs an exchange argument, a stays-ahead argument, or another invariant showing that choice can belong to an optimum. A convincing example is not proof.",
+    "id": "lesson-greedy:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-greedy"
+  },
+  {
+    "front": "For coins [1,3,4] and amount 6, what is the fewest coin count?",
+    "back": "2",
+    "id": "lesson-greedy:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-greedy"
+  },
+  {
+    "front": "What is a common trap in Greedy?",
+    "back": "Coin change with denominations [1,3,4] and amount 6 defeats largest-first: 4+1+1 uses three coins while 3+3 uses two.",
+    "id": "lesson-greedy:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-greedy"
+  },
+  {
+    "front": "What decision rule should you retain for Greedy?",
+    "back": "Try to build a counterexample before trusting a local rule. If it survives, write why exchanging the choice cannot hurt.",
+    "id": "lesson-greedy:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-greedy"
+  },
+  {
+    "front": "Walk through a concrete example of Greedy.",
+    "back": "To select the maximum number of nonoverlapping intervals, choose the one ending earliest. Replacing an optimum’s first interval with the earlier-ending one cannot reduce room for later intervals. Choosing the shortest interval or earliest start lacks that guarantee.",
+    "id": "lesson-greedy:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-greedy"
+  },
+  {
+    "front": "Explain Binary search patterns in your own words.",
+    "back": "Binary search finds a boundary in a monotone predicate, not just a value in a sorted list. Half-open intervals make insertion positions natural: maintain [left,right), where all excluded left positions fail and all excluded right positions satisfy the predicate.",
+    "id": "lesson-binary-search-patterns:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-binary-search-patterns"
+  },
+  {
+    "front": "What is the first index with value >=2 in [1,2,2,4]?",
+    "back": "1",
+    "id": "lesson-binary-search-patterns:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-binary-search-patterns"
+  },
+  {
+    "front": "What is a common trap in Binary search patterns?",
+    "back": "Mixing inclusive updates with half-open termination can skip answers or loop forever. The midpoint must cause strict interval shrinkage.",
+    "id": "lesson-binary-search-patterns:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-binary-search-patterns"
+  },
+  {
+    "front": "What decision rule should you retain for Binary search patterns?",
+    "back": "Specify first true or last false, interval convention, and loop invariant before writing updates.",
+    "id": "lesson-binary-search-patterns:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-binary-search-patterns"
+  },
+  {
+    "front": "Walk through a concrete example of Binary search patterns.",
+    "back": "For [1,2,2,4] and predicate value>=2, the first true index is 1. Searching an answer space also works: a capacity feasibility check may become monotone as capacity increases.",
+    "id": "lesson-binary-search-patterns:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-binary-search-patterns"
+  },
+  {
+    "front": "Explain Intervals in your own words.",
+    "back": "Intervals require an endpoint convention. Closed [a,b] intervals overlap when one starts exactly where another ends; half-open [a,b) intervals do not. Sorting by start turns merging into comparing the next interval with only the final merged interval.",
+    "id": "lesson-intervals:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-intervals"
+  },
+  {
+    "front": "Do closed intervals [1,2] and [2,4] overlap? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-intervals:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-intervals"
+  },
+  {
+    "front": "What is a common trap in Intervals?",
+    "back": "Updating an output interval that aliases an input array violates a nonmutation contract. Copy interval pairs before merging.",
+    "id": "lesson-intervals:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-intervals"
+  },
+  {
+    "front": "What decision rule should you retain for Intervals?",
+    "back": "Decide endpoint semantics and tie-breaking before choosing < versus <=.",
+    "id": "lesson-intervals:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-intervals"
+  },
+  {
+    "front": "Walk through a concrete example of Intervals.",
+    "back": "Closed [1,2] and [2,4] merge to [1,4]. But meeting slots [1,2) and [2,4) can use the same room. For event sweeps, tie ordering must reflect the endpoint convention.",
+    "id": "lesson-intervals:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-intervals"
+  },
+  {
+    "front": "Explain Bit manipulation in your own words.",
+    "back": "Bit operations expose compact set and parity representations, but the language’s integer model matters. Java int and JavaScript bitwise operations are 32-bit; Python integers are arbitrary precision and negative values behave like an unbounded sign extension.",
+    "id": "lesson-bit-manipulation:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-bit-manipulation"
+  },
+  {
+    "front": "How many set bits are in binary 1011?",
+    "back": "3",
+    "id": "lesson-bit-manipulation:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-bit-manipulation"
+  },
+  {
+    "front": "What is a common trap in Bit manipulation?",
+    "back": "Right shift may preserve a sign bit. JavaScript >>> converts to unsigned 32-bit form, but shifting by 32 wraps the count modulo 32.",
+    "id": "lesson-bit-manipulation:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-bit-manipulation"
+  },
+  {
+    "front": "What decision rule should you retain for Bit manipulation?",
+    "back": "State signedness and width, especially at the highest bit and for negative inputs.",
+    "id": "lesson-bit-manipulation:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-bit-manipulation"
+  },
+  {
+    "front": "Walk through a concrete example of Bit manipulation.",
+    "back": "For n=12 (1100₂), n-1=11 (1011₂), so n&(n-1)=8 (1000₂): the lowest set bit was cleared. Repeating counts set bits rather than iterating every possible position.",
+    "id": "lesson-bit-manipulation:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-bit-manipulation"
+  },
+  {
+    "front": "Explain Math in your own words.",
+    "back": "Mathematical identities can replace brute force when their domains are explicit. Euclid’s algorithm preserves gcd through (a,b)→(b,a mod b). Exponentiation by squaring halves the remaining exponent after incorporating its low bit.",
+    "id": "lesson-math:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-math"
+  },
+  {
+    "front": "What is gcd(54,24)?",
+    "back": "6",
+    "id": "lesson-math:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-math"
+  },
+  {
+    "front": "What is a common trap in Math?",
+    "back": "Modulo signs differ across languages for negative operands. Floating-point numbers cannot exactly represent all large integers; JavaScript’s safe integer ceiling is 2^53-1.",
+    "id": "lesson-math:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-math"
+  },
+  {
+    "front": "What decision rule should you retain for Math?",
+    "back": "Define zero, negative, overflow, and precision cases before applying a familiar formula.",
+    "id": "lesson-math:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-math"
+  },
+  {
+    "front": "Walk through a concrete example of Math.",
+    "back": "gcd(54,24) becomes gcd(24,6), then gcd(6,0)=6. For 2^10, squaring bases yields 2,4,16,256; only exponent bits set in 10₂=1010₂ contribute to the result.",
+    "id": "lesson-math:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-math"
+  },
+  {
+    "front": "Explain Pattern recognition and Big O in your own words.",
+    "back": "Recognize evidence, not keywords: contiguous ranges suggest maintaining a window or prefix aggregate; nonnegative weighted shortest paths suggest a priority frontier; repeated overlapping choices suggest a state table. Constraints eliminate options: n=20 may allow subsets; n=200000 usually cannot tolerate all pairs.",
+    "id": "lesson-pattern-recognition-and-big-o:card:0",
+    "track": "dsa",
+    "lessonId": "lesson-pattern-recognition-and-big-o"
+  },
+  {
+    "front": "A monotonic stack pushes and pops each of n items once. Is total work linear or quadratic?",
+    "back": "linear",
+    "id": "lesson-pattern-recognition-and-big-o:card:1",
+    "track": "dsa",
+    "lessonId": "lesson-pattern-recognition-and-big-o"
+  },
+  {
+    "front": "What is a common trap in Pattern recognition and Big O?",
+    "back": "Nested loops are not automatically quadratic when both pointers only advance n times. Expected, amortized, and worst-case bounds answer different questions.",
+    "id": "lesson-pattern-recognition-and-big-o:card:2",
+    "track": "dsa",
+    "lessonId": "lesson-pattern-recognition-and-big-o"
+  },
+  {
+    "front": "What decision rule should you retain for Pattern recognition and Big O?",
+    "back": "Cheat sheet: binary search O(log n), scan O(n), comparison sort O(n log n), all pairs O(n²), subsets O(2^n), permutations O(n!). Include output size in lower bounds.",
+    "id": "lesson-pattern-recognition-and-big-o:card:3",
+    "track": "dsa",
+    "lessonId": "lesson-pattern-recognition-and-big-o"
+  },
+  {
+    "front": "Walk through a concrete example of Pattern recognition and Big O.",
+    "back": "A million elements makes n² roughly 10^12 pair operations, while n log₂ n is about 20 million comparisons. An O(n) algorithm with a million large objects may still exceed memory. Amortized analysis counts total work across an operation sequence.",
+    "id": "lesson-pattern-recognition-and-big-o:card:4",
+    "track": "dsa",
+    "lessonId": "lesson-pattern-recognition-and-big-o"
+  },
+  {
+    "front": "Explain Java collections in your own words.",
+    "back": "List, Set, and Map describe contracts rather than specific performance. ArrayList has indexed access and amortized append; LinkedList has nodes but still linear indexed lookup. HashMap gives expected constant lookup; TreeMap orders keys with logarithmic updates.",
+    "id": "lesson-java-collections:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-java-collections"
+  },
+  {
+    "front": "Does List.of(1,2).add(3) succeed? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-java-collections:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-java-collections"
+  },
+  {
+    "front": "What is a common trap in Java collections?",
+    "back": "Arrays.asList is a fixed-size view backed by the original array, not a normal growable ArrayList. Unmodifiable wrappers may still reflect changes to the wrapped collection.",
+    "id": "lesson-java-collections:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-java-collections"
+  },
+  {
+    "front": "What decision rule should you retain for Java collections?",
+    "back": "Choose semantics first: ordering, null policy, mutation, equality, and concurrency; then evaluate complexity.",
+    "id": "lesson-java-collections:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-java-collections"
+  },
+  {
+    "front": "Walk through a concrete example of Java collections.",
+    "back": "For ArrayList<Integer> xs=[1,2,3], xs.remove(1) chooses the index overload and leaves [1,3]. xs.remove(Integer.valueOf(1)) removes by value and leaves [3]. List.of creates an unmodifiable collection.",
+    "id": "lesson-java-collections:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-java-collections"
+  },
+  {
+    "front": "Explain Java strings in your own words.",
+    "back": "String is immutable and equals compares contents; == compares reference identity. StringBuilder is appropriate for repeated construction. A char is a UTF-16 code unit, so emoji may occupy two chars and combining characters may occupy several code points.",
+    "id": "lesson-java-strings:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-java-strings"
+  },
+  {
+    "front": "Are two separately allocated new String(\"lab\") values equal with equals? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-java-strings:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-java-strings"
+  },
+  {
+    "front": "What is a common trap in Java strings?",
+    "back": "String interning can make == appear correct in small literal examples, hiding a real identity bug. Converting bytes without specifying a charset creates environmental dependence.",
+    "id": "lesson-java-strings:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-java-strings"
+  },
+  {
+    "front": "What decision rule should you retain for Java strings?",
+    "back": "Use content equality for values and explicitly choose character, code point, or grapheme semantics.",
+    "id": "lesson-java-strings:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-java-strings"
+  },
+  {
+    "front": "Walk through a concrete example of Java strings.",
+    "back": "Two new String(\"lab\") objects have equal contents but different identities. Sorting strings uses lexicographic code-unit order unless a locale-aware Collator is chosen.",
+    "id": "lesson-java-strings:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-java-strings"
+  },
+  {
+    "front": "Explain Java streams and lambdas in your own words.",
+    "back": "A stream pipeline combines a source, lazy intermediate operations, and a terminal operation. map transforms, filter selects, flatMap flattens, and reduce aggregates. Streams are single-use. Lambdas capture effectively final local bindings; captured objects may still mutate.",
+    "id": "lesson-java-streams-and-lambdas:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-java-streams-and-lambdas"
+  },
+  {
+    "front": "Does constructing a stream with only map execute that map immediately? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-java-streams-and-lambdas:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-java-streams-and-lambdas"
+  },
+  {
+    "front": "What is a common trap in Java streams and lambdas?",
+    "back": "Parallel streams do not make unsynchronized mutation safe. A shared ArrayList::add sink races, and blocking work can saturate a common thread pool.",
+    "id": "lesson-java-streams-and-lambdas:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-java-streams-and-lambdas"
+  },
+  {
+    "front": "What decision rule should you retain for Java streams and lambdas?",
+    "back": "Ask when work executes, whether order matters, and whether the reduction is associative before parallelizing.",
+    "id": "lesson-java-streams-and-lambdas:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-java-streams-and-lambdas"
+  },
+  {
+    "front": "Walk through a concrete example of Java streams and lambdas.",
+    "back": "A pipeline with map that prints values prints nothing until a terminal operation consumes it. Prefer side-effect-free transformations and collectors with explicit merge policies for duplicate keys.",
+    "id": "lesson-java-streams-and-lambdas:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-java-streams-and-lambdas"
+  },
+  {
+    "front": "Explain Java generics and exceptions in your own words.",
+    "back": "Generics enforce compile-time relationships but most type parameters are erased at runtime. Producer extends, consumer super (PECS) explains wildcard direction. Checked exceptions must be caught or declared; unchecked exceptions often represent violated programming assumptions.",
+    "id": "lesson-java-generics-and-exceptions:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-java-generics-and-exceptions"
+  },
+  {
+    "front": "Can List<? extends Number> safely accept add(1)? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-java-generics-and-exceptions:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-java-generics-and-exceptions"
+  },
+  {
+    "front": "What is a common trap in Java generics and exceptions?",
+    "back": "A raw type discards static checks and moves failures to runtime. Catching Exception and returning a success-shaped default hides failure and corrupts caller assumptions.",
+    "id": "lesson-java-generics-and-exceptions:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-java-generics-and-exceptions"
+  },
+  {
+    "front": "What decision rule should you retain for Java generics and exceptions?",
+    "back": "Preserve type information and propagate actionable failure; use finally for cleanup, not control-flow replacement.",
+    "id": "lesson-java-generics-and-exceptions:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-java-generics-and-exceptions"
+  },
+  {
+    "front": "Walk through a concrete example of Java generics and exceptions.",
+    "back": "List<? extends Number> yields Number values, but adding Integer is unsafe because the captured list might hold Double. List<? super Integer> accepts Integer, but reads only as Object. A finally return can override a pending return or exception.",
+    "id": "lesson-java-generics-and-exceptions:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-java-generics-and-exceptions"
+  },
+  {
+    "front": "Explain Java concurrency and IO in your own words.",
+    "back": "Visibility, atomicity, and mutual exclusion are separate properties. volatile establishes visibility/order for a variable, not atomic compound increments. AtomicInteger provides atomic updates; locks protect multi-variable invariants. Try-with-resources closes AutoCloseable resources reliably.",
+    "id": "lesson-java-concurrency-and-io:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-java-concurrency-and-io"
+  },
+  {
+    "front": "Resources A then B are declared in try-with-resources. Which closes first?",
+    "back": "B",
+    "id": "lesson-java-concurrency-and-io:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-java-concurrency-and-io"
+  },
+  {
+    "front": "What is a common trap in Java concurrency and IO?",
+    "back": "Holding a lock during blocking IO can serialize an entire service. Ignoring interrupts prevents cooperative cancellation and graceful shutdown.",
+    "id": "lesson-java-concurrency-and-io:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-java-concurrency-and-io"
+  },
+  {
+    "front": "What decision rule should you retain for Java concurrency and IO?",
+    "back": "Match the coordination boundary to the invariant and close resources in the ownership scope that opened them.",
+    "id": "lesson-java-concurrency-and-io:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-java-concurrency-and-io"
+  },
+  {
+    "front": "Walk through a concrete example of Java concurrency and IO.",
+    "back": "Two threads can both read a volatile count=0, compute 1, and write 1: one increment is lost. AtomicInteger.incrementAndGet avoids that single-variable race. Resources declared A then B close B then A.",
+    "id": "lesson-java-concurrency-and-io:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-java-concurrency-and-io"
+  },
+  {
+    "front": "Explain Python comprehensions in your own words.",
+    "back": "Comprehensions express mapping/filtering compactly; generators defer work and avoid materializing everything. Dictionaries retain insertion order, while sets do not promise a stable presentation order. Default argument expressions run once at definition time.",
+    "id": "lesson-python-comprehensions:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-python-comprehensions"
+  },
+  {
+    "front": "A mutable default list receives one item in each of two calls. What is its length after the second call?",
+    "back": "2",
+    "id": "lesson-python-comprehensions:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-python-comprehensions"
+  },
+  {
+    "front": "What is a common trap in Python comprehensions?",
+    "back": "A nested comprehension may hide a quadratic cross-product. Late-bound closures in loops refer to the binding at call time unless captured intentionally.",
+    "id": "lesson-python-comprehensions:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-python-comprehensions"
+  },
+  {
+    "front": "What decision rule should you retain for Python comprehensions?",
+    "back": "Distinguish eager construction, deferred iteration, and shared mutable state before shortening code.",
+    "id": "lesson-python-comprehensions:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-python-comprehensions"
+  },
+  {
+    "front": "Walk through a concrete example of Python comprehensions.",
+    "back": "def f(x,items=[]): items.append(x); return len(items) gives 1 then 2 across separate calls. Use items=None and allocate inside to isolate calls. A Counter counts all items in one pass instead of repeating list.count.",
+    "id": "lesson-python-comprehensions:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-python-comprehensions"
+  },
+  {
+    "front": "Explain JavaScript and TypeScript in your own words.",
+    "back": "JavaScript runtime behavior remains unchanged by TypeScript annotations. Types disappear during compilation, so data imported from files or network boundaries needs runtime validation. let and const have block scope; var is function-scoped. const prevents rebinding, not object mutation.",
+    "id": "lesson-javascript-and-typescript:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-javascript-and-typescript"
+  },
+  {
+    "front": "Three deferred closures from for(var i=0;i<3;i++) all read which final value?",
+    "back": "3",
+    "id": "lesson-javascript-and-typescript:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-javascript-and-typescript"
+  },
+  {
+    "front": "What is a common trap in JavaScript and TypeScript?",
+    "back": "A type assertion does not validate JSON. Number arithmetic loses integer precision above 2^53-1; mixing BigInt and Number throws.",
+    "id": "lesson-javascript-and-typescript:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-javascript-and-typescript"
+  },
+  {
+    "front": "What decision rule should you retain for JavaScript and TypeScript?",
+    "back": "Use types for internal guarantees and guards for external data. Keep closure lifetime and mutation explicit.",
+    "id": "lesson-javascript-and-typescript:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-javascript-and-typescript"
+  },
+  {
+    "front": "Walk through a concrete example of JavaScript and TypeScript.",
+    "back": "Three closures made with var i in one loop all observe i=3 when called later. With let, each iteration has a distinct binding. A Set preserves insertion order, enabling stable deduplication.",
+    "id": "lesson-javascript-and-typescript:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-javascript-and-typescript"
+  },
+  {
+    "front": "Explain Regex and file handling in your own words.",
+    "back": "Regex parsing and string-literal parsing are separate layers. Anchors enforce a whole-input contract; a partial match may accept garbage. Keep IO streaming and encoding explicit, and use structured parsers instead of regex for nested syntax such as arbitrary YAML.",
+    "id": "lesson-regex-and-file-handling:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-regex-and-file-handling"
+  },
+  {
+    "front": "Does ^[0-9]+$ match 12x? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-regex-and-file-handling:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-regex-and-file-handling"
+  },
+  {
+    "front": "What is a common trap in Regex and file handling?",
+    "back": "Nested unbounded quantifiers can cause catastrophic backtracking. Avoid evaluating hostile patterns without limits, and do not construct a regex from user text without escaping.",
+    "id": "lesson-regex-and-file-handling:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-regex-and-file-handling"
+  },
+  {
+    "front": "What decision rule should you retain for Regex and file handling?",
+    "back": "Specify the grammar, full-match requirement, encoding, and input size limit before writing a pattern.",
+    "id": "lesson-regex-and-file-handling:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-regex-and-file-handling"
+  },
+  {
+    "front": "Walk through a concrete example of Regex and file handling.",
+    "back": "The Java source string \"\\\\d+\" gives the regex engine \\d+. Parsing KEY=VALUE with ^([A-Z_]+)=(.*)$ permits an empty value and additional equals signs in the value, but rejects lowercase keys.",
+    "id": "lesson-regex-and-file-handling:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-regex-and-file-handling"
+  },
+  {
+    "front": "Explain SQL idioms in your own words.",
+    "back": "SQL uses three-valued logic: comparisons involving NULL usually produce UNKNOWN, which WHERE does not keep. IS NULL tests missingness. COUNT(*) counts rows, COUNT(column) counts non-null values. Result order is unspecified without ORDER BY.",
+    "id": "lesson-sql-idioms:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-sql-idioms"
+  },
+  {
+    "front": "Does NULL = NULL evaluate to true in SQL? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-sql-idioms:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-sql-idioms"
+  },
+  {
+    "front": "What is a common trap in SQL idioms?",
+    "back": "NOT IN with a NULL in its subquery can turn all comparisons unknown. Prefer NOT EXISTS for a null-safe anti-join when that matches the intended semantics.",
+    "id": "lesson-sql-idioms:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-sql-idioms"
+  },
+  {
+    "front": "What decision rule should you retain for SQL idioms?",
+    "back": "Treat NULL, duplicate rows, and deterministic ordering as part of every query contract.",
+    "id": "lesson-sql-idioms:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-sql-idioms"
+  },
+  {
+    "front": "Walk through a concrete example of SQL idioms.",
+    "back": "SELECT CASE WHEN NULL=NULL THEN 'yes' ELSE 'no' END returns no. A left join followed by WHERE right.id IS NOT NULL effectively removes unmatched rows, changing outer-join intent.",
+    "id": "lesson-sql-idioms:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-sql-idioms"
+  },
+  {
+    "front": "Explain Bash idioms in your own words.",
+    "back": "Shell words undergo multiple expansions; quotes control splitting and globbing. \"$x\" preserves one argument, while unquoted $x may expand into several. Exit status drives control flow. set -euo pipefail is useful but errexit has contextual exceptions, so critical operations still need explicit checks.",
+    "id": "lesson-bash-idioms:card:0",
+    "track": "syntax",
+    "lessonId": "lesson-bash-idioms"
+  },
+  {
+    "front": "With x=\"a b\", how many arguments does \"$x\" expand to?",
+    "back": "1",
+    "id": "lesson-bash-idioms:card:1",
+    "track": "syntax",
+    "lessonId": "lesson-bash-idioms"
+  },
+  {
+    "front": "What is a common trap in Bash idioms?",
+    "back": "Parsing filenames through whitespace breaks on spaces and newlines. Prefer arrays, quoted expansions, and null-delimited find/read pipelines.",
+    "id": "lesson-bash-idioms:card:2",
+    "track": "syntax",
+    "lessonId": "lesson-bash-idioms"
+  },
+  {
+    "front": "What decision rule should you retain for Bash idioms?",
+    "back": "Count arguments after expansion rather than reading command text visually.",
+    "id": "lesson-bash-idioms:card:3",
+    "track": "syntax",
+    "lessonId": "lesson-bash-idioms"
+  },
+  {
+    "front": "Walk through a concrete example of Bash idioms.",
+    "back": "With x=\"a b\", printf \"%s\\n\" \"$x\" prints one line. Command substitution removes trailing newlines. A pipeline normally reports its last command’s status; pipefail includes earlier failures.",
+    "id": "lesson-bash-idioms:card:4",
+    "track": "syntax",
+    "lessonId": "lesson-bash-idioms"
+  },
+  {
+    "front": "Explain Linux and shell in your own words.",
+    "back": "Processes have IDs, parentage, file descriptors, environment, working directory, and exit status. stdin/stdout/stderr are separate streams. Permissions apply to user/group/other; directory execute controls traversal. Signals request behavior, with SIGTERM allowing cleanup and SIGKILL preventing it.",
+    "id": "lesson-linux-and-shell:card:0",
+    "track": "devops",
+    "lessonId": "lesson-linux-and-shell"
+  },
+  {
+    "front": "Does redirecting only stdout also redirect stderr? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-linux-and-shell:card:1",
+    "track": "devops",
+    "lessonId": "lesson-linux-and-shell"
+  },
+  {
+    "front": "What is a common trap in Linux and shell?",
+    "back": "A successful command may produce no output; empty output is not a universal success signal. Running as root can conceal permission mistakes.",
+    "id": "lesson-linux-and-shell:card:2",
+    "track": "devops",
+    "lessonId": "lesson-linux-and-shell"
+  },
+  {
+    "front": "What decision rule should you retain for Linux and shell?",
+    "back": "Preserve exit statuses and inspect the process/resource layer actually implicated by the symptom.",
+    "id": "lesson-linux-and-shell:card:3",
+    "track": "devops",
+    "lessonId": "lesson-linux-and-shell"
+  },
+  {
+    "front": "Walk through a concrete example of Linux and shell.",
+    "back": "Redirecting stdout with >out.txt leaves stderr visible unless explicitly redirected. In cmd 2>&1 >out.txt, stderr points to the old stdout; order matters. Diagnose a service with process status, listening sockets, logs, and exit codes rather than immediately restarting it.",
+    "id": "lesson-linux-and-shell:card:4",
+    "track": "devops",
+    "lessonId": "lesson-linux-and-shell"
+  },
+  {
+    "front": "Explain Git workflows in your own words.",
+    "back": "Commits form a directed acyclic history of snapshots. Rebase replays commits on a new parent and changes their IDs; merge preserves branch history. Revert creates a new inverse commit without rewriting published history. Bisect narrows a known good/bad regression range using a repeatable test.",
+    "id": "lesson-git-workflows:card:0",
+    "track": "devops",
+    "lessonId": "lesson-git-workflows"
+  },
+  {
+    "front": "Does git revert create a new commit rather than rewriting the old one? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-git-workflows:card:1",
+    "track": "devops",
+    "lessonId": "lesson-git-workflows"
+  },
+  {
+    "front": "What is a common trap in Git workflows?",
+    "back": "A bisect test that fails because old dependencies cannot install does not reliably classify the code regression. Skip untestable revisions rather than labeling them bad.",
+    "id": "lesson-git-workflows:card:2",
+    "track": "devops",
+    "lessonId": "lesson-git-workflows"
+  },
+  {
+    "front": "What decision rule should you retain for Git workflows?",
+    "back": "Choose history rewriting only when ownership and collaboration policy permit it; keep a reproducible good/bad oracle.",
+    "id": "lesson-git-workflows:card:3",
+    "track": "devops",
+    "lessonId": "lesson-git-workflows"
+  },
+  {
+    "front": "Walk through a concrete example of Git workflows.",
+    "back": "During a rebase conflict: edit the file, git add the resolved file, then git rebase --continue. To back out, git rebase --abort restores the pre-rebase state. For a shared bad commit, git revert is usually safer than reset plus force-push.",
+    "id": "lesson-git-workflows:card:4",
+    "track": "devops",
+    "lessonId": "lesson-git-workflows"
+  },
+  {
+    "front": "Explain Dockerfiles and Compose in your own words.",
+    "back": "Images are layered filesystem/runtime configuration; containers are running instances with isolated processes. Build-cache invalidation follows preceding layers. Multi-stage builds separate build tools from runtime artifacts. Compose describes local service relationships, not a production orchestration guarantee.",
+    "id": "lesson-dockerfiles-and-compose:card:0",
+    "track": "devops",
+    "lessonId": "lesson-dockerfiles-and-compose"
+  },
+  {
+    "front": "If source is copied before dependency installation, can a source change invalidate that dependency layer? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-dockerfiles-and-compose:card:1",
+    "track": "devops",
+    "lessonId": "lesson-dockerfiles-and-compose"
+  },
+  {
+    "front": "What is a common trap in Dockerfiles and Compose?",
+    "back": "Secrets placed in build arguments or copied layers can remain in image history. Running non-root is one control, not a complete security boundary.",
+    "id": "lesson-dockerfiles-and-compose:card:2",
+    "track": "devops",
+    "lessonId": "lesson-dockerfiles-and-compose"
+  },
+  {
+    "front": "What decision rule should you retain for Dockerfiles and Compose?",
+    "back": "Make builds reproducible, separate runtime from tooling, and distinguish startup from healthy service behavior.",
+    "id": "lesson-dockerfiles-and-compose:card:3",
+    "track": "devops",
+    "lessonId": "lesson-dockerfiles-and-compose"
+  },
+  {
+    "front": "Walk through a concrete example of Dockerfiles and Compose.",
+    "back": "Copy package manifests, install locked dependencies, then copy source. A source-only change can reuse the dependency layer. A db healthcheck plus service_healthy dependency gates startup readiness; simple start order does not.",
+    "id": "lesson-dockerfiles-and-compose:card:4",
+    "track": "devops",
+    "lessonId": "lesson-dockerfiles-and-compose"
+  },
+  {
+    "front": "Explain CI CD pipelines in your own words.",
+    "back": "A pipeline is a dependency graph executed in clean environments. Reproducible checks pin toolchains and use lockfile-aware installs. Deployment adds environment protection, scoped credentials, artifact identity, and rollback. Avoid rebuilding a different artifact after tests and calling it the tested release.",
+    "id": "lesson-ci-cd-pipelines:card:0",
+    "track": "devops",
+    "lessonId": "lesson-ci-cd-pipelines"
+  },
+  {
+    "front": "Should npm ci normally precede npm test on a clean runner? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-ci-cd-pipelines:card:1",
+    "track": "devops",
+    "lessonId": "lesson-ci-cd-pipelines"
+  },
+  {
+    "front": "What is a common trap in CI CD pipelines?",
+    "back": "Untrusted pull-request code must not gain deployment credentials. Caches improve performance but are not trusted artifacts or substitutes for a lockfile.",
+    "id": "lesson-ci-cd-pipelines:card:2",
+    "track": "devops",
+    "lessonId": "lesson-ci-cd-pipelines"
+  },
+  {
+    "front": "What decision rule should you retain for CI CD pipelines?",
+    "back": "Promote the tested artifact and match each job’s permissions to its actual responsibilities.",
+    "id": "lesson-ci-cd-pipelines:card:3",
+    "track": "devops",
+    "lessonId": "lesson-ci-cd-pipelines"
+  },
+  {
+    "front": "Walk through a concrete example of CI CD pipelines.",
+    "back": "A Node test job checks out source, sets up Node, runs npm ci, then npm test. Permissions contents:read is enough for reading source; a Pages deploy needs its own narrower write scopes.",
+    "id": "lesson-ci-cd-pipelines:card:4",
+    "track": "devops",
+    "lessonId": "lesson-ci-cd-pipelines"
+  },
+  {
+    "front": "Explain Kubernetes core objects in your own words.",
+    "back": "A Pod is the scheduling unit; a Deployment reconciles replica state; a Service selects endpoints by labels. The API is declarative: controllers continuously attempt to make observed state match desired state. A successful apply confirms acceptance, not application readiness.",
+    "id": "lesson-kubernetes-core-objects:card:0",
+    "track": "devops",
+    "lessonId": "lesson-kubernetes-core-objects"
+  },
+  {
+    "front": "Does containerPort alone expose a Pod through a Service? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-kubernetes-core-objects:card:1",
+    "track": "devops",
+    "lessonId": "lesson-kubernetes-core-objects"
+  },
+  {
+    "front": "What is a common trap in Kubernetes core objects?",
+    "back": "ReadWriteOnce volume access refers to a node, not necessarily a single pod. Requests influence scheduling; memory limits can cause OOM termination.",
+    "id": "lesson-kubernetes-core-objects:card:2",
+    "track": "devops",
+    "lessonId": "lesson-kubernetes-core-objects"
+  },
+  {
+    "front": "What decision rule should you retain for Kubernetes core objects?",
+    "back": "Debug desired spec, controller events, pod state, endpoints, and application health as separate layers.",
+    "id": "lesson-kubernetes-core-objects:card:3",
+    "track": "devops",
+    "lessonId": "lesson-kubernetes-core-objects"
+  },
+  {
+    "front": "Walk through a concrete example of Kubernetes core objects.",
+    "back": "A Deployment selector app=web must match its pod-template label. A Service port 80 may forward to container targetPort 8080. Readiness removes unready endpoints; liveness may restart a container; startup probes protect slow initialization.",
+    "id": "lesson-kubernetes-core-objects:card:4",
+    "track": "devops",
+    "lessonId": "lesson-kubernetes-core-objects"
+  },
+  {
+    "front": "Explain Terraform basics in your own words.",
+    "back": "Terraform compares configuration, state, and provider-observed infrastructure to create a plan. State maps resource addresses to real objects and can contain sensitive data. Remote locking coordinates writers; it is not a replacement for review or access control.",
+    "id": "lesson-terraform-basics:card:0",
+    "track": "devops",
+    "lessonId": "lesson-terraform-basics"
+  },
+  {
+    "front": "Does terraform plan normally apply its proposed changes? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-terraform-basics:card:1",
+    "track": "devops",
+    "lessonId": "lesson-terraform-basics"
+  },
+  {
+    "front": "What is a common trap in Terraform basics?",
+    "back": "A successful validate checks configuration structure, not whether credentials, quotas, or provider-side constraints will allow apply. Never commit state containing secrets.",
+    "id": "lesson-terraform-basics:card:2",
+    "track": "devops",
+    "lessonId": "lesson-terraform-basics"
+  },
+  {
+    "front": "What decision rule should you retain for Terraform basics?",
+    "back": "Review replacement/destruction actions and protect state with encryption, access control, and coordinated writes.",
+    "id": "lesson-terraform-basics:card:3",
+    "track": "devops",
+    "lessonId": "lesson-terraform-basics"
+  },
+  {
+    "front": "Walk through a concrete example of Terraform basics.",
+    "back": "A typed variable with validation rejects instance_count<1 before provisioning. plan previews proposed actions and may refresh remote state; apply performs mutations. Renaming a resource address without a moved block can appear as destroy/create.",
+    "id": "lesson-terraform-basics:card:4",
+    "track": "devops",
+    "lessonId": "lesson-terraform-basics"
+  },
+  {
+    "front": "Explain Networking fundamentals in your own words.",
+    "back": "DNS maps names to records; IP routing chooses packet paths; TCP establishes a reliable byte stream; TLS authenticates/encrypts it; HTTP defines application messages. Success at one layer does not prove the next works. Timeouts and refusals suggest different failure modes.",
+    "id": "lesson-networking-fundamentals:card:0",
+    "track": "devops",
+    "lessonId": "lesson-networking-fundamentals"
+  },
+  {
+    "front": "Does successful DNS resolution prove a TCP service is reachable? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-networking-fundamentals:card:1",
+    "track": "devops",
+    "lessonId": "lesson-networking-fundamentals"
+  },
+  {
+    "front": "What is a common trap in Networking fundamentals?",
+    "back": "Retries at every layer can multiply load during an outage. Bound retry budgets, use exponential backoff with jitter, and distinguish safe/idempotent operations.",
+    "id": "lesson-networking-fundamentals:card:2",
+    "track": "devops",
+    "lessonId": "lesson-networking-fundamentals"
+  },
+  {
+    "front": "What decision rule should you retain for Networking fundamentals?",
+    "back": "Test the failing layer directly and preserve the original error rather than replacing every failure with a generic connection problem.",
+    "id": "lesson-networking-fundamentals:card:3",
+    "track": "devops",
+    "lessonId": "lesson-networking-fundamentals"
+  },
+  {
+    "front": "Walk through a concrete example of Networking fundamentals.",
+    "back": "A hostname resolving correctly does not prove port 443 is reachable. A TCP connection succeeding does not prove the certificate matches the hostname. An HTTP 503 can mean the application is reachable but has no healthy upstream.",
+    "id": "lesson-networking-fundamentals:card:4",
+    "track": "devops",
+    "lessonId": "lesson-networking-fundamentals"
+  },
+  {
+    "front": "Explain Monitoring and incident response in your own words.",
+    "back": "Metrics summarize trends, logs preserve events, and traces connect work across services. An SLI measures user-facing behavior; an SLO sets the target; an error budget quantifies tolerable failures. During an incident, establish impact and coordination, mitigate, verify recovery, then investigate systemic causes.",
+    "id": "lesson-monitoring-and-incident-response:card:0",
+    "track": "devops",
+    "lessonId": "lesson-monitoring-and-incident-response"
+  },
+  {
+    "front": "At 99.9% over 30 days, how many minutes is the time-based error budget?",
+    "back": "43.2",
+    "id": "lesson-monitoring-and-incident-response:card:1",
+    "track": "devops",
+    "lessonId": "lesson-monitoring-and-incident-response"
+  },
+  {
+    "front": "What is a common trap in Monitoring and incident response?",
+    "back": "Unbounded user-ID labels cause metric-cardinality explosions. A postmortem blaming one person misses the conditions that allowed an error to become an outage.",
+    "id": "lesson-monitoring-and-incident-response:card:2",
+    "track": "devops",
+    "lessonId": "lesson-monitoring-and-incident-response"
+  },
+  {
+    "front": "What decision rule should you retain for Monitoring and incident response?",
+    "back": "Make telemetry actionable, cap cardinality, and distinguish mitigation from root-cause remediation.",
+    "id": "lesson-monitoring-and-incident-response:card:3",
+    "track": "devops",
+    "lessonId": "lesson-monitoring-and-incident-response"
+  },
+  {
+    "front": "Walk through a concrete example of Monitoring and incident response.",
+    "back": "A 99.9% availability target across 30 days permits 43.2 minutes of unavailability under a time-based definition. Request-based SLIs may produce a different budget. A rollback should be guided by user-facing signals, not only CPU.",
+    "id": "lesson-monitoring-and-incident-response:card:4",
+    "track": "devops",
+    "lessonId": "lesson-monitoring-and-incident-response"
+  },
+  {
+    "front": "Explain Regression and gradient descent in your own words.",
+    "back": "Linear regression predicts a numeric target with weighted features. For mean squared loss L=mean((wx-y)^2), dL/dw=2*mean((wx-y)x). Gradient descent moves opposite the gradient. Learning rate and feature scaling determine stability; a lower training loss is not proof of better generalization.",
+    "id": "lesson-regression-and-gradient-descent:card:0",
+    "track": "ai",
+    "lessonId": "lesson-regression-and-gradient-descent"
+  },
+  {
+    "front": "A gradient -10 with learning rate 0.1 moves w=0 to what value?",
+    "back": "1",
+    "id": "lesson-regression-and-gradient-descent:card:1",
+    "track": "ai",
+    "lessonId": "lesson-regression-and-gradient-descent"
+  },
+  {
+    "front": "What is a common trap in Regression and gradient descent?",
+    "back": "Some loss definitions include 1/2, changing the gradient factor. Mixing sum and mean makes the effective learning rate depend on batch size.",
+    "id": "lesson-regression-and-gradient-descent:card:2",
+    "track": "ai",
+    "lessonId": "lesson-regression-and-gradient-descent"
+  },
+  {
+    "front": "What decision rule should you retain for Regression and gradient descent?",
+    "back": "Write the exact objective before differentiating, and test gradients on a tiny hand-computable dataset.",
+    "id": "lesson-regression-and-gradient-descent:card:3",
+    "track": "ai",
+    "lessonId": "lesson-regression-and-gradient-descent"
+  },
+  {
+    "front": "Walk through a concrete example of Regression and gradient descent.",
+    "back": "With x=[1,2], y=[2,4], w=0, the gradient is -10. Learning rate 0.1 produces w=1 after one step. Finite-difference checks compare analytic gradients with small numerical perturbations.",
+    "id": "lesson-regression-and-gradient-descent:card:4",
+    "track": "ai",
+    "lessonId": "lesson-regression-and-gradient-descent"
+  },
+  {
+    "front": "Explain Logistic regression in your own words.",
+    "back": "Logistic regression maps a linear score through sigmoid to a probability-like value. Binary cross-entropy is a natural objective, while classification requires a threshold chosen for costs and calibration. A score’s probability interpretation depends on training distribution and calibration.",
+    "id": "lesson-logistic-regression:card:0",
+    "track": "ai",
+    "lessonId": "lesson-logistic-regression"
+  },
+  {
+    "front": "What is sigmoid(0)?",
+    "back": "0.5",
+    "id": "lesson-logistic-regression:card:1",
+    "track": "ai",
+    "lessonId": "lesson-logistic-regression"
+  },
+  {
+    "front": "What is a common trap in Logistic regression?",
+    "back": "A threshold of 0.5 is not universally optimal, especially under asymmetric false-positive/false-negative costs or changed prevalence.",
+    "id": "lesson-logistic-regression:card:2",
+    "track": "ai",
+    "lessonId": "lesson-logistic-regression"
+  },
+  {
+    "front": "What decision rule should you retain for Logistic regression?",
+    "back": "Separate numerical stability, calibration, and the policy that turns scores into decisions.",
+    "id": "lesson-logistic-regression:card:3",
+    "track": "ai",
+    "lessonId": "lesson-logistic-regression"
+  },
+  {
+    "front": "Walk through a concrete example of Logistic regression.",
+    "back": "sigmoid(0)=0.5. For a large negative x, exp(-x) can overflow; use exp(x)/(1+exp(x)) on the negative branch. Compute log-loss through stable logit formulations rather than taking log of rounded zero.",
+    "id": "lesson-logistic-regression:card:4",
+    "track": "ai",
+    "lessonId": "lesson-logistic-regression"
+  },
+  {
+    "front": "Explain Train validation test in your own words.",
+    "back": "Training data fits parameters; validation data selects models and settings; the final test set estimates performance after those choices. Cross-validation rotates validation folds within development data. Split by entity or time when random rows would leak future or related observations.",
+    "id": "lesson-train-validation-test:card:0",
+    "track": "ai",
+    "lessonId": "lesson-train-validation-test"
+  },
+  {
+    "front": "Should a scaler be fitted on the combined train and test data? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-train-validation-test:card:1",
+    "track": "ai",
+    "lessonId": "lesson-train-validation-test"
+  },
+  {
+    "front": "What is a common trap in Train validation test?",
+    "back": "Repeatedly tuning against the test set turns it into validation data. A preprocessing step run before splitting can leak information even without using labels.",
+    "id": "lesson-train-validation-test:card:2",
+    "track": "ai",
+    "lessonId": "lesson-train-validation-test"
+  },
+  {
+    "front": "What decision rule should you retain for Train validation test?",
+    "back": "Align split boundaries with the real prediction moment and the independent unit of generalization.",
+    "id": "lesson-train-validation-test:card:3",
+    "track": "ai",
+    "lessonId": "lesson-train-validation-test"
+  },
+  {
+    "front": "Walk through a concrete example of Train validation test.",
+    "back": "If multiple records belong to one patient, keep that patient in a single split. Fit scalers and vocabulary only on training folds, then transform validation data using those fitted values. Stratification balances labels but does not prevent group leakage.",
+    "id": "lesson-train-validation-test:card:4",
+    "track": "ai",
+    "lessonId": "lesson-train-validation-test"
+  },
+  {
+    "front": "Explain Regularization and bias variance in your own words.",
+    "back": "High bias means the model or features cannot express the needed relationship; high variance means fit depends too strongly on the sample. Regularization constrains complexity, trading training fit for stability. Learning curves help distinguish lack of capacity from lack of representative data.",
+    "id": "lesson-regularization-and-bias-variance:card:0",
+    "track": "ai",
+    "lessonId": "lesson-regularization-and-bias-variance"
+  },
+  {
+    "front": "Does stronger regularization always improve validation performance? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-regularization-and-bias-variance:card:1",
+    "track": "ai",
+    "lessonId": "lesson-regularization-and-bias-variance"
+  },
+  {
+    "front": "What is a common trap in Regularization and bias variance?",
+    "back": "More data does not automatically fix a biased hypothesis class or shifted labels. Very strong regularization can underfit both training and validation.",
+    "id": "lesson-regularization-and-bias-variance:card:2",
+    "track": "ai",
+    "lessonId": "lesson-regularization-and-bias-variance"
+  },
+  {
+    "front": "What decision rule should you retain for Regularization and bias variance?",
+    "back": "Compare training and validation curves before changing model size, data volume, or penalty strength.",
+    "id": "lesson-regularization-and-bias-variance:card:3",
+    "track": "ai",
+    "lessonId": "lesson-regularization-and-bias-variance"
+  },
+  {
+    "front": "Walk through a concrete example of Regularization and bias variance.",
+    "back": "An L2 penalty lambda*sum(w²) discourages large coefficients. Standardizing features is important because the same coefficient magnitude means different effects at different scales. Intercepts are often excluded from the penalty.",
+    "id": "lesson-regularization-and-bias-variance:card:4",
+    "track": "ai",
+    "lessonId": "lesson-regularization-and-bias-variance"
+  },
+  {
+    "front": "Explain Classification metrics in your own words.",
+    "back": "Precision=TP/(TP+FP) asks how many positive predictions were right. Recall=TP/(TP+FN) asks how many actual positives were found. F1 is their harmonic mean. ROC AUC measures ranking across positive-negative pairs; PR curves often reveal more in heavily imbalanced settings.",
+    "id": "lesson-classification-metrics:card:0",
+    "track": "ai",
+    "lessonId": "lesson-classification-metrics"
+  },
+  {
+    "front": "For TP=3 and FP=1, what is precision?",
+    "back": "0.75",
+    "id": "lesson-classification-metrics:card:1",
+    "track": "ai",
+    "lessonId": "lesson-classification-metrics"
+  },
+  {
+    "front": "What is a common trap in Classification metrics?",
+    "back": "AUC is undefined for a test set with only one class. Aggregate metrics can hide poor behavior in a critical subgroup. Always report denominator and zero-division conventions.",
+    "id": "lesson-classification-metrics:card:2",
+    "track": "ai",
+    "lessonId": "lesson-classification-metrics"
+  },
+  {
+    "front": "What decision rule should you retain for Classification metrics?",
+    "back": "Choose metrics from error costs and prevalence, then inspect slices and threshold-dependent behavior.",
+    "id": "lesson-classification-metrics:card:3",
+    "track": "ai",
+    "lessonId": "lesson-classification-metrics"
+  },
+  {
+    "front": "Walk through a concrete example of Classification metrics.",
+    "back": "For TP=3, FP=1, FN=2, precision=.75 and recall=.6; F1=2/3. A model predicting all negatives can have 99% accuracy when positives are 1%, yet zero recall.",
+    "id": "lesson-classification-metrics:card:4",
+    "track": "ai",
+    "lessonId": "lesson-classification-metrics"
+  },
+  {
+    "front": "Explain Tokenization in your own words.",
+    "back": "Tokenization maps text into discrete model inputs. Word splitting, subword vocabularies, Unicode normalization, and special tokens all affect behavior. The embedding model’s tokenizer must match its trained vocabulary and context window. Token count is not character or word count.",
+    "id": "lesson-tokenization:card:0",
+    "track": "ai",
+    "lessonId": "lesson-tokenization"
+  },
+  {
+    "front": "Does one word always correspond to one model token? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-tokenization:card:1",
+    "track": "ai",
+    "lessonId": "lesson-tokenization"
+  },
+  {
+    "front": "What is a common trap in Tokenization?",
+    "back": "Character limits do not guarantee a token budget. Naive case folding may erase distinctions meaningful to code, identifiers, or multilingual text.",
+    "id": "lesson-tokenization:card:2",
+    "track": "ai",
+    "lessonId": "lesson-tokenization"
+  },
+  {
+    "front": "What decision rule should you retain for Tokenization?",
+    "back": "Document normalization and count tokens with the actual target tokenizer for context budgeting.",
+    "id": "lesson-tokenization:card:3",
+    "track": "ai",
+    "lessonId": "lesson-tokenization"
+  },
+  {
+    "front": "Walk through a concrete example of Tokenization.",
+    "back": "A simple ASCII tokenizer maps \"RAG: 2 chunks\" to [rag,2,chunks]. A production subword tokenizer may split an unfamiliar identifier into many pieces, changing context usage and retrieval chunk sizes.",
+    "id": "lesson-tokenization:card:4",
+    "track": "ai",
+    "lessonId": "lesson-tokenization"
+  },
+  {
+    "front": "Explain Embeddings and vector search in your own words.",
+    "back": "Embeddings represent items as numeric vectors whose geometry reflects a training objective. Cosine similarity compares direction; dot product also includes magnitude unless vectors are normalized. Exact search scores every vector; approximate indexes trade some recall for speed and memory.",
+    "id": "lesson-embeddings-and-vector-search:card:0",
+    "track": "ai",
+    "lessonId": "lesson-embeddings-and-vector-search"
+  },
+  {
+    "front": "What is cosine similarity between [1,0] and [0,1]?",
+    "back": "0",
+    "id": "lesson-embeddings-and-vector-search:card:1",
+    "track": "ai",
+    "lessonId": "lesson-embeddings-and-vector-search"
+  },
+  {
+    "front": "What is a common trap in Embeddings and vector search?",
+    "back": "High similarity is not factual entailment. Changing embedding models usually requires re-embedding the corpus because spaces are not generally compatible.",
+    "id": "lesson-embeddings-and-vector-search:card:2",
+    "track": "ai",
+    "lessonId": "lesson-embeddings-and-vector-search"
+  },
+  {
+    "front": "What decision rule should you retain for Embeddings and vector search?",
+    "back": "Version the embedding model and index together, and measure retrieval quality rather than trusting geometry alone.",
+    "id": "lesson-embeddings-and-vector-search:card:3",
+    "track": "ai",
+    "lessonId": "lesson-embeddings-and-vector-search"
+  },
+  {
+    "front": "Walk through a concrete example of Embeddings and vector search.",
+    "back": "Vectors [1,0] and [0,1] have cosine 0; [1,2] and [2,4] have cosine 1. A zero vector has no direction, so an application must define its handling. Evaluate approximate search against exact nearest neighbors on representative queries.",
+    "id": "lesson-embeddings-and-vector-search:card:4",
+    "track": "ai",
+    "lessonId": "lesson-embeddings-and-vector-search"
+  },
+  {
+    "front": "Explain RAG and grounding in your own words.",
+    "back": "Retrieval-augmented generation retrieves source material and places it in a model’s context. Grounding requires answers to be supported by that material; retrieval alone does not guarantee this. Chunk boundaries, overlap, metadata, access control, and query rewriting all affect what evidence is available.",
+    "id": "lesson-rag-and-grounding:card:0",
+    "track": "ai",
+    "lessonId": "lesson-rag-and-grounding"
+  },
+  {
+    "front": "How many chunks cover five tokens with size 3 and overlap 1 when redundant trailing chunks are avoided?",
+    "back": "2",
+    "id": "lesson-rag-and-grounding:card:1",
+    "track": "ai",
+    "lessonId": "lesson-rag-and-grounding"
+  },
+  {
+    "front": "What is a common trap in RAG and grounding?",
+    "back": "A valid citation ID does not prove the cited text supports a claim. Retrieved documents can contain untrusted instructions; treat them as data rather than authority over the application.",
+    "id": "lesson-rag-and-grounding:card:2",
+    "track": "ai",
+    "lessonId": "lesson-rag-and-grounding"
+  },
+  {
+    "front": "What decision rule should you retain for RAG and grounding?",
+    "back": "Evaluate retrieval coverage, citation validity, and semantic support separately; abstain when evidence is insufficient.",
+    "id": "lesson-rag-and-grounding:card:3",
+    "track": "ai",
+    "lessonId": "lesson-rag-and-grounding"
+  },
+  {
+    "front": "Walk through a concrete example of RAG and grounding.",
+    "back": "With five tokens, chunk size 3 and overlap 1 produce [0,1,2] then [2,3,4]. Extra overlap improves boundary continuity but duplicates context and storage. Preserve document IDs, offsets, dates, and citation links for attribution.",
+    "id": "lesson-rag-and-grounding:card:4",
+    "track": "ai",
+    "lessonId": "lesson-rag-and-grounding"
+  },
+  {
+    "front": "Explain Retrieval evaluation in your own words.",
+    "back": "Build a query set with relevance judgments and a defined unit: document, passage, or answer-bearing span. Precision@k measures result usefulness; recall@k measures relevant-set coverage; reciprocal rank measures how soon the first relevant result appears. Evaluation conventions must handle duplicates and unjudged results.",
+    "id": "lesson-retrieval-evaluation:card:0",
+    "track": "ai",
+    "lessonId": "lesson-retrieval-evaluation"
+  },
+  {
+    "front": "If the first relevant result is rank 4, what is reciprocal rank?",
+    "back": "0.25",
+    "id": "lesson-retrieval-evaluation:card:1",
+    "track": "ai",
+    "lessonId": "lesson-retrieval-evaluation"
+  },
+  {
+    "front": "What is a common trap in Retrieval evaluation?",
+    "back": "Evaluating only on queries used to tune chunking or retrieval thresholds overestimates generalization. Relevance judgments may be incomplete or ambiguous.",
+    "id": "lesson-retrieval-evaluation:card:2",
+    "track": "ai",
+    "lessonId": "lesson-retrieval-evaluation"
+  },
+  {
+    "front": "What decision rule should you retain for Retrieval evaluation?",
+    "back": "Keep held-out queries and critical slices; measure downstream answer support in addition to retrieval ranking.",
+    "id": "lesson-retrieval-evaluation:card:3",
+    "track": "ai",
+    "lessonId": "lesson-retrieval-evaluation"
+  },
+  {
+    "front": "Walk through a concrete example of Retrieval evaluation.",
+    "back": "If retrieved top two are [x,a] and relevant=[a,b], precision@2=.5, recall@2=.5, and reciprocal rank=.5. A retriever may have excellent recall but return chunks too long to fit the context budget.",
+    "id": "lesson-retrieval-evaluation:card:4",
+    "track": "ai",
+    "lessonId": "lesson-retrieval-evaluation"
+  },
+  {
+    "front": "Explain Prompt engineering and agents in your own words.",
+    "back": "Prompts should separate task, trusted instructions, untrusted inputs, required output, and uncertainty policy. Few-shot examples clarify structure but can bias outputs. Tool-using agents introduce actions: validate arguments, constrain permissions, impose budgets, and require confirmation for consequential side effects.",
+    "id": "lesson-prompt-engineering-and-agents:card:0",
+    "track": "ai",
+    "lessonId": "lesson-prompt-engineering-and-agents"
+  },
+  {
+    "front": "Is a prompt saying \"never do harm\" a sufficient tool authorization boundary? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-prompt-engineering-and-agents:card:1",
+    "track": "ai",
+    "lessonId": "lesson-prompt-engineering-and-agents"
+  },
+  {
+    "front": "What is a common trap in Prompt engineering and agents?",
+    "back": "Prompt instructions alone are not a security boundary. Tool results and retrieved pages can contain prompt injection, and repeated retries can multiply cost or actions.",
+    "id": "lesson-prompt-engineering-and-agents:card:2",
+    "track": "ai",
+    "lessonId": "lesson-prompt-engineering-and-agents"
+  },
+  {
+    "front": "What decision rule should you retain for Prompt engineering and agents?",
+    "back": "Give the system least privilege, a bounded action loop, explicit stop conditions, and tests for refusal and malformed output.",
+    "id": "lesson-prompt-engineering-and-agents:card:3",
+    "track": "ai",
+    "lessonId": "lesson-prompt-engineering-and-agents"
+  },
+  {
+    "front": "Walk through a concrete example of Prompt engineering and agents.",
+    "back": "A retrieval prompt can require a citation per factual claim and an explicit insufficient-evidence response. A tool call schema can restrict an operation to read-only search with bounded result count. Neither guarantees correctness without validation and evaluation.",
+    "id": "lesson-prompt-engineering-and-agents:card:4",
+    "track": "ai",
+    "lessonId": "lesson-prompt-engineering-and-agents"
+  },
+  {
+    "front": "Explain LLM evaluation harnesses in your own words.",
+    "back": "An evaluation harness fixes inputs, expected behaviors, scoring rules, and model/config versions. Use deterministic checks where possible and calibrated human judgments for subjective properties. Track latency, refusal appropriateness, grounding, and safety alongside task success.",
+    "id": "lesson-llm-evaluation-harnesses:card:0",
+    "track": "ai",
+    "lessonId": "lesson-llm-evaluation-harnesses"
+  },
+  {
+    "front": "Can a better mean score hide a severe regression on one important case? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-llm-evaluation-harnesses:card:1",
+    "track": "ai",
+    "lessonId": "lesson-llm-evaluation-harnesses"
+  },
+  {
+    "front": "What is a common trap in LLM evaluation harnesses?",
+    "back": "An LLM judge can share the same blind spots as the model being judged. Hidden test leakage and repeated optimization against the benchmark invalidate confidence.",
+    "id": "lesson-llm-evaluation-harnesses:card:2",
+    "track": "ai",
+    "lessonId": "lesson-llm-evaluation-harnesses"
+  },
+  {
+    "front": "What decision rule should you retain for LLM evaluation harnesses?",
+    "back": "Use versioned held-out cases, uncertainty estimates, and human review of the highest-impact failures.",
+    "id": "lesson-llm-evaluation-harnesses:card:3",
+    "track": "ai",
+    "lessonId": "lesson-llm-evaluation-harnesses"
+  },
+  {
+    "front": "Walk through a concrete example of LLM evaluation harnesses.",
+    "back": "A candidate can improve average score while regressing an important case from .8 to .2. Gate aggregate improvement and per-slice regressions. Record prompt version, retrieval index, decoding settings, and test-set provenance so results are reproducible.",
+    "id": "lesson-llm-evaluation-harnesses:card:4",
+    "track": "ai",
+    "lessonId": "lesson-llm-evaluation-harnesses"
+  },
+  {
+    "front": "Explain Transformer basics in your own words.",
+    "back": "Attention computes content-dependent weighted combinations of value vectors. Queries and keys determine scores, often scaled by sqrt(key dimension), then normalized with softmax. Positional information matters because attention alone does not encode sequence order. Causal masking prevents reading future tokens during autoregressive prediction.",
+    "id": "lesson-transformer-basics:card:0",
+    "track": "ai",
+    "lessonId": "lesson-transformer-basics"
+  },
+  {
+    "front": "What is either softmax weight for equal scores [1000,1000]?",
+    "back": "0.5",
+    "id": "lesson-transformer-basics:card:1",
+    "track": "ai",
+    "lessonId": "lesson-transformer-basics"
+  },
+  {
+    "front": "What is a common trap in Transformer basics?",
+    "back": "Attention weights are not a complete explanation of a model’s reasoning. Increasing context length affects memory and computation even if parameter count is unchanged.",
+    "id": "lesson-transformer-basics:card:2",
+    "track": "ai",
+    "lessonId": "lesson-transformer-basics"
+  },
+  {
+    "front": "What decision rule should you retain for Transformer basics?",
+    "back": "Separate parameter memory, activation/context costs, and inference KV-cache growth when estimating hardware needs.",
+    "id": "lesson-transformer-basics:card:3",
+    "track": "ai",
+    "lessonId": "lesson-transformer-basics"
+  },
+  {
+    "front": "Walk through a concrete example of Transformer basics.",
+    "back": "Softmax([1000,1000]) is [.5,.5]. Subtracting the maximum before exponentiation preserves probabilities and prevents overflow. A full dense attention matrix has quadratic pairwise score storage in sequence length, although optimized kernels reduce materialization.",
+    "id": "lesson-transformer-basics:card:4",
+    "track": "ai",
+    "lessonId": "lesson-transformer-basics"
+  },
+  {
+    "front": "Explain Joins and aggregation in your own words.",
+    "back": "A join matches rows; it may multiply them when several matches exist. Grouping then aggregates the resulting rows, so accidental many-to-many joins inflate totals. LEFT JOIN preserves unmatched left rows by adding NULLs for the right side.",
+    "id": "lesson-joins-and-aggregation:card:0",
+    "track": "sql",
+    "lessonId": "lesson-joins-and-aggregation"
+  },
+  {
+    "front": "For an empty department after a left join, what does COUNT(employee.id) return?",
+    "back": "0",
+    "id": "lesson-joins-and-aggregation:card:1",
+    "track": "sql",
+    "lessonId": "lesson-joins-and-aggregation"
+  },
+  {
+    "front": "What is a common trap in Joins and aggregation?",
+    "back": "Selecting ungrouped columns can be rejected or produce implementation-specific values. Sum orders before joining to another one-to-many table when necessary.",
+    "id": "lesson-joins-and-aggregation:card:2",
+    "track": "sql",
+    "lessonId": "lesson-joins-and-aggregation"
+  },
+  {
+    "front": "What decision rule should you retain for Joins and aggregation?",
+    "back": "Predict row cardinality after every join before applying aggregation.",
+    "id": "lesson-joins-and-aggregation:card:3",
+    "track": "sql",
+    "lessonId": "lesson-joins-and-aggregation"
+  },
+  {
+    "front": "Walk through a concrete example of Joins and aggregation.",
+    "back": "A department with no employees produces one null-extended row. COUNT(*) would count it as 1; COUNT(employee.id) returns 0. Filters on the right table often belong in ON if unmatched departments must survive.",
+    "id": "lesson-joins-and-aggregation:card:4",
+    "track": "sql",
+    "lessonId": "lesson-joins-and-aggregation"
+  },
+  {
+    "front": "Explain Window functions in your own words.",
+    "back": "Window functions compute across related rows without collapsing them. PARTITION BY defines independent groups; ORDER BY defines sequence; the frame defines which ordered rows contribute. ROW_NUMBER, RANK, and DENSE_RANK handle ties differently.",
+    "id": "lesson-window-functions:card:0",
+    "track": "sql",
+    "lessonId": "lesson-window-functions"
+  },
+  {
+    "front": "What is the dense rank of 80 after salaries 100,100,80 descending?",
+    "back": "2",
+    "id": "lesson-window-functions:card:1",
+    "track": "sql",
+    "lessonId": "lesson-window-functions"
+  },
+  {
+    "front": "What is a common trap in Window functions?",
+    "back": "A window ORDER BY does not guarantee final result order. Add an outer ORDER BY, and include deterministic tie-breakers for ROW_NUMBER.",
+    "id": "lesson-window-functions:card:2",
+    "track": "sql",
+    "lessonId": "lesson-window-functions"
+  },
+  {
+    "front": "What decision rule should you retain for Window functions?",
+    "back": "Specify partition, order, frame, and tie policy independently.",
+    "id": "lesson-window-functions:card:3",
+    "track": "sql",
+    "lessonId": "lesson-window-functions"
+  },
+  {
+    "front": "Walk through a concrete example of Window functions.",
+    "back": "Salaries [100,100,80] have dense ranks [1,1,2] and ranks [1,1,3]. A running total with ROWS UNBOUNDED PRECEDING uses each physical row; default RANGE semantics may include peers together.",
+    "id": "lesson-window-functions:card:4",
+    "track": "sql",
+    "lessonId": "lesson-window-functions"
+  },
+  {
+    "front": "Explain CTEs and subqueries in your own words.",
+    "back": "A common table expression names a query stage; a correlated subquery depends on the current outer row. CTEs improve readability but do not universally force materialization or improve performance. Optimizers may inline, reorder, or cache parts depending on semantics and engine version.",
+    "id": "lesson-ctes-and-subqueries:card:0",
+    "track": "sql",
+    "lessonId": "lesson-ctes-and-subqueries"
+  },
+  {
+    "front": "Does a CTE always force materialization in every database? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-ctes-and-subqueries:card:1",
+    "track": "sql",
+    "lessonId": "lesson-ctes-and-subqueries"
+  },
+  {
+    "front": "What is a common trap in CTEs and subqueries?",
+    "back": "NOT IN behaves unexpectedly when its subquery contains NULL. NOT EXISTS expresses \"there is no matching row\" without that specific trap.",
+    "id": "lesson-ctes-and-subqueries:card:2",
+    "track": "sql",
+    "lessonId": "lesson-ctes-and-subqueries"
+  },
+  {
+    "front": "What decision rule should you retain for CTEs and subqueries?",
+    "back": "Choose a formulation whose row identity is unambiguous, then inspect its actual plan.",
+    "id": "lesson-ctes-and-subqueries:card:3",
+    "track": "sql",
+    "lessonId": "lesson-ctes-and-subqueries"
+  },
+  {
+    "front": "Walk through a concrete example of CTEs and subqueries.",
+    "back": "To choose each customer’s newest order, assign ROW_NUMBER partitioned by customer and ordered by date descending then id descending, then select rn=1 in an outer query. A GROUP BY customer with bare amount does not express that contract.",
+    "id": "lesson-ctes-and-subqueries:card:4",
+    "track": "sql",
+    "lessonId": "lesson-ctes-and-subqueries"
+  },
+  {
+    "front": "Explain Recursive queries in your own words.",
+    "back": "A recursive CTE has an anchor and a recursive step joined with UNION ALL or UNION. It can traverse hierarchies, generate sequences, and expand reachable states. Correctness requires a termination condition; cyclic input may need an explicit visited path or depth guard.",
+    "id": "lesson-recursive-queries:card:0",
+    "track": "sql",
+    "lessonId": "lesson-recursive-queries"
+  },
+  {
+    "front": "If the anchor is depth 0, what depth is its direct report?",
+    "back": "1",
+    "id": "lesson-recursive-queries:card:1",
+    "track": "sql",
+    "lessonId": "lesson-recursive-queries"
+  },
+  {
+    "front": "What is a common trap in Recursive queries?",
+    "back": "UNION removes duplicate whole rows; adding depth means a cycle can keep producing distinct rows forever. UNION alone is not always cycle detection.",
+    "id": "lesson-recursive-queries:card:2",
+    "track": "sql",
+    "lessonId": "lesson-recursive-queries"
+  },
+  {
+    "front": "What decision rule should you retain for Recursive queries?",
+    "back": "Define the frontier state, termination rule, and whether duplicate paths or only unique vertices matter.",
+    "id": "lesson-recursive-queries:card:3",
+    "track": "sql",
+    "lessonId": "lesson-recursive-queries"
+  },
+  {
+    "front": "Walk through a concrete example of Recursive queries.",
+    "back": "An organization query anchors on a manager at depth 0, then joins employees whose manager_id equals each frontier member and returns depth+1. Ordering output by depth and name does not itself control traversal execution order.",
+    "id": "lesson-recursive-queries:card:4",
+    "track": "sql",
+    "lessonId": "lesson-recursive-queries"
+  },
+  {
+    "front": "Explain Indexes and query plans in your own words.",
+    "back": "An index trades storage and write maintenance for faster access paths. Composite indexes are ordered lexicographically by leading columns. A query plan reveals whether the engine scans, searches, sorts, or uses a covering index; cost depends on selectivity and data distribution.",
+    "id": "lesson-indexes-and-query-plans:card:0",
+    "track": "sql",
+    "lessonId": "lesson-indexes-and-query-plans"
+  },
+  {
+    "front": "Does adding an index guarantee every query becomes faster? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-indexes-and-query-plans:card:1",
+    "track": "sql",
+    "lessonId": "lesson-indexes-and-query-plans"
+  },
+  {
+    "front": "What is a common trap in Indexes and query plans?",
+    "back": "An index is not always faster for small tables or low-selectivity queries. Wrapping an indexed column in a function may prevent a normal index lookup unless an expression index matches.",
+    "id": "lesson-indexes-and-query-plans:card:2",
+    "track": "sql",
+    "lessonId": "lesson-indexes-and-query-plans"
+  },
+  {
+    "front": "What decision rule should you retain for Indexes and query plans?",
+    "back": "Compare plans and timings with representative cardinalities and include write overhead.",
+    "id": "lesson-indexes-and-query-plans:card:3",
+    "track": "sql",
+    "lessonId": "lesson-indexes-and-query-plans"
+  },
+  {
+    "front": "Walk through a concrete example of Indexes and query plans.",
+    "back": "An index (customer,ordered_on,id) can support one customer’s ordered history. It is less useful for an unrestricted filter only on ordered_on because the leading customer dimension is unconstrained.",
+    "id": "lesson-indexes-and-query-plans:card:4",
+    "track": "sql",
+    "lessonId": "lesson-indexes-and-query-plans"
+  },
+  {
+    "front": "Explain Transactions and isolation in your own words.",
+    "back": "A transaction groups operations into a commit/rollback boundary. Isolation determines which concurrent effects are visible and which anomalies are prevented. Serializable behavior corresponds to some serial execution, but conflicts may require retries. Database implementations differ; SQLite’s locking model is not a general simulation of distributed MVCC.",
+    "id": "lesson-transactions-and-isolation:card:0",
+    "track": "sql",
+    "lessonId": "lesson-transactions-and-isolation"
+  },
+  {
+    "front": "Can snapshot isolation permit write skew? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-transactions-and-isolation:card:1",
+    "track": "sql",
+    "lessonId": "lesson-transactions-and-isolation"
+  },
+  {
+    "front": "What is a common trap in Transactions and isolation?",
+    "back": "Wrapping code in a transaction does not automatically make a check-then-act invariant safe. Retry the whole transaction after a serialization conflict, not just the last statement.",
+    "id": "lesson-transactions-and-isolation:card:2",
+    "track": "sql",
+    "lessonId": "lesson-transactions-and-isolation"
+  },
+  {
+    "front": "What decision rule should you retain for Transactions and isolation?",
+    "back": "Identify the invariant’s read/write set and choose constraints, locking, or serializable isolation accordingly.",
+    "id": "lesson-transactions-and-isolation:card:3",
+    "track": "sql",
+    "lessonId": "lesson-transactions-and-isolation"
+  },
+  {
+    "front": "Walk through a concrete example of Transactions and isolation.",
+    "back": "Two doctors both read that someone else is on call, then each marks themselves off in separate rows. Under snapshot isolation, both writes may commit and violate the cross-row invariant: write skew.",
+    "id": "lesson-transactions-and-isolation:card:4",
+    "track": "sql",
+    "lessonId": "lesson-transactions-and-isolation"
+  },
+  {
+    "front": "Explain Normalization in your own words.",
+    "back": "Normalization organizes dependencies to reduce insertion, update, and deletion anomalies. A customer’s address belongs to the customer identity rather than being duplicated in every order unless an intentional historical snapshot is required. Foreign keys express relationships and can enforce referential integrity.",
+    "id": "lesson-normalization:card:0",
+    "track": "sql",
+    "lessonId": "lesson-normalization"
+  },
+  {
+    "front": "Should an old order’s shipping-address snapshot always change when a customer moves? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-normalization:card:1",
+    "track": "sql",
+    "lessonId": "lesson-normalization"
+  },
+  {
+    "front": "What is a common trap in Normalization?",
+    "back": "Denormalization is not inherently wrong; it creates a consistency obligation. Document rebuild, synchronization, and staleness rules for read models.",
+    "id": "lesson-normalization:card:2",
+    "track": "sql",
+    "lessonId": "lesson-normalization"
+  },
+  {
+    "front": "What decision rule should you retain for Normalization?",
+    "back": "Model functional dependencies and temporal meaning before applying a normal-form checklist.",
+    "id": "lesson-normalization:card:3",
+    "track": "sql",
+    "lessonId": "lesson-normalization"
+  },
+  {
+    "front": "Walk through a concrete example of Normalization.",
+    "back": "If ten orders repeat a current customer address, changing only nine creates disagreement. Splitting customers and orders avoids that anomaly. A shipping-address snapshot on an order is different: it records historical fact and should not change with the current profile.",
+    "id": "lesson-normalization:card:4",
+    "track": "sql",
+    "lessonId": "lesson-normalization"
+  },
+  {
+    "front": "Explain Scaling and capacity in your own words.",
+    "back": "Capacity planning turns product requirements into workload assumptions: request rates, peak factors, payload sizes, retention, replication, and latency percentiles. Horizontal scaling needs state partitioning or shared coordination; stateless request handlers simplify adding instances but do not remove downstream bottlenecks.",
+    "id": "lesson-scaling-and-capacity:card:0",
+    "track": "systems",
+    "lessonId": "lesson-scaling-and-capacity"
+  },
+  {
+    "front": "At 10 million requests/day and decimal 2 KB each, how many GB/day of payload?",
+    "back": "20",
+    "id": "lesson-scaling-and-capacity:card:1",
+    "track": "systems",
+    "lessonId": "lesson-scaling-and-capacity"
+  },
+  {
+    "front": "What is a common trap in Scaling and capacity?",
+    "back": "Averages conceal bursts and tail latency. More workers can overload a fixed-capacity database and worsen latency instead of improving throughput.",
+    "id": "lesson-scaling-and-capacity:card:2",
+    "track": "systems",
+    "lessonId": "lesson-scaling-and-capacity"
+  },
+  {
+    "front": "What decision rule should you retain for Scaling and capacity?",
+    "back": "Write assumptions with units, estimate bottlenecks, and validate under peak and failure load.",
+    "id": "lesson-scaling-and-capacity:card:3",
+    "track": "systems",
+    "lessonId": "lesson-scaling-and-capacity"
+  },
+  {
+    "front": "Walk through a concrete example of Scaling and capacity.",
+    "back": "Ten million requests/day is about 115.7 average RPS. At decimal 2 KB per response, payload alone is 20 GB/day. A 10× peak multiplier gives roughly 1157 peak RPS before retries, cache misses, or replication traffic.",
+    "id": "lesson-scaling-and-capacity:card:4",
+    "track": "systems",
+    "lessonId": "lesson-scaling-and-capacity"
+  },
+  {
+    "front": "Explain Caching in your own words.",
+    "back": "A cache stores derived/reusable results to reduce latency or source load. Cache-aside reads fetch on miss and populate the cache. TTL bounds some staleness, while invalidation and write policies determine how updates become visible. Stampedes occur when many callers rebuild the same missing value.",
+    "id": "lesson-caching:card:0",
+    "track": "systems",
+    "lessonId": "lesson-caching"
+  },
+  {
+    "front": "Does TTL alone prevent all stale-write races? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-caching:card:1",
+    "track": "systems",
+    "lessonId": "lesson-caching"
+  },
+  {
+    "front": "What is a common trap in Caching?",
+    "back": "A write followed by invalidation can race with an old in-flight read that repopulates stale data. Versioning or carefully chosen update policies may be required.",
+    "id": "lesson-caching:card:2",
+    "track": "systems",
+    "lessonId": "lesson-caching"
+  },
+  {
+    "front": "What decision rule should you retain for Caching?",
+    "back": "State the allowed staleness budget and failure policy before choosing eviction or invalidation.",
+    "id": "lesson-caching:card:3",
+    "track": "systems",
+    "lessonId": "lesson-caching"
+  },
+  {
+    "front": "Walk through a concrete example of Caching.",
+    "back": "If a hot key expires at once, single-flight/coalescing lets one caller rebuild while others wait or receive bounded stale data. TTL jitter spreads expirations, but does not fix one exceptionally hot key by itself.",
+    "id": "lesson-caching:card:4",
+    "track": "systems",
+    "lessonId": "lesson-caching"
+  },
+  {
+    "front": "Explain Queues and backpressure in your own words.",
+    "back": "A queue decouples producers from consumers but does not create infinite capacity. Arrival rate above service rate grows backlog and latency. At-least-once delivery requires idempotent consumers; retries need bounded backoff and dead-letter handling for persistent failures.",
+    "id": "lesson-queues-and-backpressure:card:0",
+    "track": "systems",
+    "lessonId": "lesson-queues-and-backpressure"
+  },
+  {
+    "front": "Can a crash after a side effect but before acknowledgement cause redelivery? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-queues-and-backpressure:card:1",
+    "track": "systems",
+    "lessonId": "lesson-queues-and-backpressure"
+  },
+  {
+    "front": "What is a common trap in Queues and backpressure?",
+    "back": "Exactly-once claims often hide a narrower transactional scope. An in-memory dedup set does not survive restarts or coordinate multiple workers.",
+    "id": "lesson-queues-and-backpressure:card:2",
+    "track": "systems",
+    "lessonId": "lesson-queues-and-backpressure"
+  },
+  {
+    "front": "What decision rule should you retain for Queues and backpressure?",
+    "back": "Bound backlog, define overload behavior, and make repeated delivery safe before adding retries.",
+    "id": "lesson-queues-and-backpressure:card:3",
+    "track": "systems",
+    "lessonId": "lesson-queues-and-backpressure"
+  },
+  {
+    "front": "Walk through a concrete example of Queues and backpressure.",
+    "back": "A worker can charge a payment and crash before acknowledging. Redelivery must reuse an idempotency key at the side-effect boundary. A visibility timeout acts like a lease; long jobs may need safe renewal.",
+    "id": "lesson-queues-and-backpressure:card:4",
+    "track": "systems",
+    "lessonId": "lesson-queues-and-backpressure"
+  },
+  {
+    "front": "Explain Sharding in your own words.",
+    "back": "Sharding partitions data across independent storage groups. A good key balances load while keeping common operations local. Hash partitioning distributes ordinary keys; range partitioning supports ordered scans but can concentrate traffic. Rebalancing and cross-shard transactions become explicit operational costs.",
+    "id": "lesson-sharding:card:0",
+    "track": "systems",
+    "lessonId": "lesson-sharding"
+  },
+  {
+    "front": "Does consistent hashing alone split one extremely hot key across shards? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-sharding:card:1",
+    "track": "systems",
+    "lessonId": "lesson-sharding"
+  },
+  {
+    "front": "What is a common trap in Sharding?",
+    "back": "Uniform key counts do not imply uniform load: one key may receive most requests. A shard router and migration protocol need versioning and rollback.",
+    "id": "lesson-sharding:card:2",
+    "track": "systems",
+    "lessonId": "lesson-sharding"
+  },
+  {
+    "front": "What decision rule should you retain for Sharding?",
+    "back": "Evaluate bytes, requests, and tenant skew separately, then design a resharding path before it is urgent.",
+    "id": "lesson-sharding:card:3",
+    "track": "systems",
+    "lessonId": "lesson-sharding"
+  },
+  {
+    "front": "Walk through a concrete example of Sharding.",
+    "back": "Tenant ID keeps one tenant’s data together, but a huge tenant can dominate a shard. Adding a bucket dimension splits that tenant at the cost of scatter/gather queries. Consistent hashing limits remapping when membership changes, but does not solve hot-key skew.",
+    "id": "lesson-sharding:card:4",
+    "track": "systems",
+    "lessonId": "lesson-sharding"
+  },
+  {
+    "front": "Explain Consistency and CAP in your own words.",
+    "back": "Consistency guarantees describe what clients may observe. Linearizability makes operations appear atomic in real-time order; eventual consistency promises convergence under suitable conditions. During a network partition, a system cannot guarantee both linearizable behavior and availability for every request.",
+    "id": "lesson-consistency-and-cap:card:0",
+    "track": "systems",
+    "lessonId": "lesson-consistency-and-cap"
+  },
+  {
+    "front": "Can a lagging read replica violate read-your-writes? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-consistency-and-cap:card:1",
+    "track": "systems",
+    "lessonId": "lesson-consistency-and-cap"
+  },
+  {
+    "front": "What is a common trap in Consistency and CAP?",
+    "back": "CAP is not a menu to pick any two properties in all conditions. Strong consistency also differs from durability, and an available stale answer may violate a business invariant.",
+    "id": "lesson-consistency-and-cap:card:2",
+    "track": "systems",
+    "lessonId": "lesson-consistency-and-cap"
+  },
+  {
+    "front": "What decision rule should you retain for Consistency and CAP?",
+    "back": "Specify guarantees per operation and explain behavior during partitions, not just in the healthy case.",
+    "id": "lesson-consistency-and-cap:card:3",
+    "track": "systems",
+    "lessonId": "lesson-consistency-and-cap"
+  },
+  {
+    "front": "Walk through a concrete example of Consistency and CAP.",
+    "back": "A profile update followed by a lagging-replica read may show old data. Session-sticky primary reads, version tokens, or waiting for replication can implement read-your-writes, with different latency and availability costs.",
+    "id": "lesson-consistency-and-cap:card:4",
+    "track": "systems",
+    "lessonId": "lesson-consistency-and-cap"
+  },
+  {
+    "front": "Explain Rate limiters in your own words.",
+    "back": "A rate limiter bounds admitted work. A token bucket refills at a rate up to a capacity, allowing controlled bursts. Fixed windows are simple but permit boundary bursts; sliding logs are precise but expensive. Distributed enforcement needs an atomic coordination strategy or an explicit approximation.",
+    "id": "lesson-rate-limiters:card:0",
+    "track": "systems",
+    "lessonId": "lesson-rate-limiters"
+  },
+  {
+    "front": "A full capacity-10 bucket allows how many immediate one-token requests?",
+    "back": "10",
+    "id": "lesson-rate-limiters:card:1",
+    "track": "systems",
+    "lessonId": "lesson-rate-limiters"
+  },
+  {
+    "front": "What is a common trap in Rate limiters?",
+    "back": "Separate local counters on every server multiply the global allowance. Retrying rejected requests without jitter can synchronize clients into new bursts.",
+    "id": "lesson-rate-limiters:card:2",
+    "track": "systems",
+    "lessonId": "lesson-rate-limiters"
+  },
+  {
+    "front": "What decision rule should you retain for Rate limiters?",
+    "back": "Define key scope, burst capacity, sustained rate, atomicity, and outage policy.",
+    "id": "lesson-rate-limiters:card:3",
+    "track": "systems",
+    "lessonId": "lesson-rate-limiters"
+  },
+  {
+    "front": "Walk through a concrete example of Rate limiters.",
+    "back": "A capacity-10 bucket refilling 2 tokens/second permits ten immediate requests when full, then roughly two per second sustained. Responses can use 429 and Retry-After. Fail-open favors availability; fail-closed favors abuse protection.",
+    "id": "lesson-rate-limiters:card:4",
+    "track": "systems",
+    "lessonId": "lesson-rate-limiters"
+  },
+  {
+    "front": "Explain URL shortener in your own words.",
+    "back": "A shortener stores a durable mapping from a compact key to a destination and serves redirects on a high-read path. Key generation can use random IDs with collision checks or allocated sequences with encoding. Expiry, abuse handling, and destination validation are product requirements, not afterthoughts.",
+    "id": "lesson-url-shortener:card:0",
+    "track": "systems",
+    "lessonId": "lesson-url-shortener"
+  },
+  {
+    "front": "Must random key generation still handle collisions? Answer yes/no.",
+    "back": "yes",
+    "id": "lesson-url-shortener:card:1",
+    "track": "systems",
+    "lessonId": "lesson-url-shortener"
+  },
+  {
+    "front": "What is a common trap in URL shortener?",
+    "back": "Generating a key and checking existence in separate nontransactional steps races. Unbounded redirects can become an abuse tool even without a complex backend.",
+    "id": "lesson-url-shortener:card:2",
+    "track": "systems",
+    "lessonId": "lesson-url-shortener"
+  },
+  {
+    "front": "What decision rule should you retain for URL shortener?",
+    "back": "Separate allocation correctness, redirect latency, and abuse controls; estimate keyspace and collision risk.",
+    "id": "lesson-url-shortener:card:3",
+    "track": "systems",
+    "lessonId": "lesson-url-shortener"
+  },
+  {
+    "front": "Walk through a concrete example of URL shortener.",
+    "back": "A random key insert must enforce uniqueness atomically and retry a collision. Cache popular mappings, but preserve a way to invalidate disabled malicious links. Choose 301 versus 302 with browser/intermediary caching behavior in mind.",
+    "id": "lesson-url-shortener:card:4",
+    "track": "systems",
+    "lessonId": "lesson-url-shortener"
+  },
+  {
+    "front": "Explain Feed and chat in your own words.",
+    "back": "Feeds combine ranking, fanout, pagination, and freshness. Fanout-on-write makes reads cheap but magnifies celebrity writes; fanout-on-read does the reverse. Chat adds durable message identity, acknowledgements, ordering scope, reconnect history, and duplicate handling.",
+    "id": "lesson-feed-and-chat:card:0",
+    "track": "systems",
+    "lessonId": "lesson-feed-and-chat"
+  },
+  {
+    "front": "Does a WebSocket alone guarantee durable exactly-once messaging? Answer yes/no.",
+    "back": "no",
+    "id": "lesson-feed-and-chat:card:1",
+    "track": "systems",
+    "lessonId": "lesson-feed-and-chat"
+  },
+  {
+    "front": "What is a common trap in Feed and chat?",
+    "back": "A WebSocket connection is not durable delivery. A message received twice after reconnect needs a stable ID, and an acknowledgement must have a documented persistence meaning.",
+    "id": "lesson-feed-and-chat:card:2",
+    "track": "systems",
+    "lessonId": "lesson-feed-and-chat"
+  },
+  {
+    "front": "What decision rule should you retain for Feed and chat?",
+    "back": "Choose ordering/freshness guarantees and durable boundaries before selecting a transport.",
+    "id": "lesson-feed-and-chat:card:3",
+    "track": "systems",
+    "lessonId": "lesson-feed-and-chat"
+  },
+  {
+    "front": "Walk through a concrete example of Feed and chat.",
+    "back": "A hybrid feed precomputes ordinary authors and merges celebrity posts at read time. Cursor pagination based on a stable ordering key avoids the shifting offsets caused by newly inserted posts. Chat can promise ordering per conversation without promising one global order.",
+    "id": "lesson-feed-and-chat:card:4",
+    "track": "systems",
+    "lessonId": "lesson-feed-and-chat"
+  }
+]
